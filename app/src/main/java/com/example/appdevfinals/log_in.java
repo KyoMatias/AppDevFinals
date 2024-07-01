@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import android.widget.Button;
+import android.content.Intent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 public class log_in extends AppCompatActivity {
 
     @Override
@@ -42,8 +46,8 @@ public class log_in extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                Intent open_main_menu = new Intent(log_in.this, main_menu.class);
-                startActivity(open_main_menu);
+                Intent intent = new Intent(log_in.this, main_menu.class);
+                startActivity(intent);
 
                 }
         });

@@ -2,9 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash">
+    android:background="@drawable/splash"
+    tools:context=".splash">
+
 
     <TextView
         android:id="@+id/textView"
@@ -71,17 +74,10 @@
         tools:layout_editor_absoluteX="181dp"
         tools:layout_editor_absoluteY="621dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <gradient
-    android:angle="45"
-    android:startColor="#FF0000"
-    android:endColor="#0000FF"
-    android:type="linear" />
-</shape>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/gradient_background">
 
-</LinearLayout>
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@drawable/gradient_background"/>-->
+<!--</LinearLayout>-->
