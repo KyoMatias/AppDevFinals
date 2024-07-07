@@ -19,10 +19,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 public class log_in extends AppCompatActivity {
+    Button loginBtn;
+    EditText usernameEditTxt, passwordEditTxt;
+    int triesCounter = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button loginBtn;
+
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -41,60 +44,29 @@ public class log_in extends AppCompatActivity {
         if credentials are incorrect, after 10 tries, disable login button
         */
 
+        loginBtn = (Button)findViewById(id.login_btn);
+        usernameEditTxt = (EditText)findViewById(id.username_edit_text);
+        passwordEditTxt = (EditText)findViewById(id.password_edit_text);
 
-        loginBtn = (Button)findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
 
-                Intent intent = new Intent(log_in.this, main_menu.class);
-                startActivity(intent);
+                Intent intent = new Intent(log_in.this, MainActivity.class);
+                if (usernameEditTxt.getText().toString().equals("user") && passwordEditTxt.getText().toString().equals("1234")) {
+                    //I could create a custom toast that has a shorter duration
+//                    Toast.makeText(getApplicationContext(),"Redirecting",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Logging In...",Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Wrong Username or Password!",Toast.LENGTH_SHORT).show();
+                    triesCounter--;
 
-                }
-        });
-    }
-
-/*        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        b1 = (Button)findViewById(R.id.button);
-        ed1 = (EditText)findViewById(R.id.editText);
-        ed2 = (EditText)findViewById(R.id.editText2);
-
-        b2 = (Button)findViewById(R.id.button2);
-        tx1 = (TextView)findViewById(R.id.textView3);
-        tx1.setVisibility(View.GONE);
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ed1.getText().toString().equals("admin") &&
-                        ed2.getText().toString().equals("admin")) {
-                    Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Wrong
-                            Credentials",Toast.LENGTH_SHORT).show();
-
-                            tx1.setVisibility(View.VISIBLE);
-                    tx1.setBackgroundColor(Color.RED);
-                    counter--;
-                    tx1.setText(Integer.toString(counter));
-
-                    if (counter == 0) {
-                        b1.setEnabled(false);
+                    if (triesCounter == 0){
+                        loginBtn.setEnabled(false);
                     }
                 }
             }
         });
-
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        }
-    }*/
+    }
 }
