@@ -3,8 +3,6 @@ package com.example.appdevfinals;
 import static com.example.appdevfinals.R.*;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.graphics.Color;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -16,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 public class log_in extends AppCompatActivity {
     Button loginBtn;
@@ -44,9 +41,9 @@ public class log_in extends AppCompatActivity {
         if credentials are incorrect, after 10 tries, disable login button
         */
 
-        loginBtn = (Button)findViewById(id.login_btn);
-        usernameEditTxt = (EditText)findViewById(id.username_edit_text);
-        passwordEditTxt = (EditText)findViewById(id.password_edit_text);
+        loginBtn = findViewById(id.login_btn);
+        usernameEditTxt = findViewById(id.username_edit_text);
+        passwordEditTxt = findViewById(id.password_edit_text);
 
         loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
