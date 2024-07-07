@@ -1,5 +1,7 @@
 package com.example.appdevfinals;
 
+import static com.example.appdevfinals.R.*;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;

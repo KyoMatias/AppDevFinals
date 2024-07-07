@@ -77,7 +77,7 @@
         android:layout_height="81dp"
         android:scaleX="0.4"
         android:scaleY="0.4"
-        app:srcCompat="@drawable/Reels"
+        app:srcCompat="@drawable/reels"
         tools:layout_editor_absoluteX="217dp"
         tools:layout_editor_absoluteY="648dp" />
 
