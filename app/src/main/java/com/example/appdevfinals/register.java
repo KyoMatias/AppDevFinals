@@ -10,6 +10,21 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class register extends AppCompatActivity {
 
+/*
+* TO DO
+*
+* Implement a user registration function
+*
+* Needs to do be able to save the user data locally in their phone
+* Needs to be able to save the ff:
+* First name
+* Last name
+* User name
+* Password
+* Email
+*
+* Might need validation for password and email
+* */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
