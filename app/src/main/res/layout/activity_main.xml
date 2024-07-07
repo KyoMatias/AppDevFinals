@@ -5,4 +5,87 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    android:background="#D07474"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/firstname_label"
+        android:layout_width="217dp"
+        android:layout_height="70dp"
+        android:fontFamily="cursive"
+        android:lineSpacingExtra="10sp"
+        android:text="OnlyBands"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="650dp" />
+
+    <ImageButton
+        android:id="@+id/settingsbutton"
+        android:layout_width="79dp"
+        android:layout_height="81dp"
+        android:scaleX="0.4"
+        android:scaleY="0.4"
+        app:srcCompat="@drawable/settingsico"
+        tools:layout_editor_absoluteX="316dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <ImageButton
+        android:id="@+id/inboxbutton"
+        android:layout_width="79dp"
+        android:layout_height="81dp"
+        android:scaleX="0.3"
+        android:scaleY="0.3"
+        app:srcCompat="@drawable/inboxico"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="649dp" />
+
+    <ImageButton
+        android:id="@+id/accountbutton"
+        android:layout_width="79dp"
+        android:layout_height="81dp"
+        android:scaleX="0.3"
+        android:scaleY="0.3"
+        app:srcCompat="@drawable/accountico"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <ImageButton
+        android:id="@+id/accountbutton"
+        android:layout_width="79dp"
+        android:layout_height="81dp"
+        android:scaleX="0.3"
+        android:scaleY="0.3"
+        app:srcCompat="@drawable/accountico"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <ImageButton
+        android:id="@+id/reelsbutton"
+        android:layout_width="79dp"
+        android:layout_height="81dp"
+        android:scaleX="0.4"
+        android:scaleY="0.4"
+        app:srcCompat="@drawable/Reels"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <ScrollView
+        android:layout_width="414dp"
+        android:layout_height="564dp"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="85dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

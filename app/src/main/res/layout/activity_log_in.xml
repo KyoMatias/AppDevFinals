@@ -5,33 +5,119 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D16B6B"
+    android:backgroundTint="#FEBBB6"
     tools:context=".log_in">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Activity_FormPage"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/firstname_label"
+        android:layout_width="234dp"
+        android:layout_height="79dp"
+        android:fontFamily="cursive"
+        android:lineSpacingExtra="10sp"
+        android:text="OnlyBands"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="213dp" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FEBBB6"
         android:ems="10"
         android:inputType="textPassword"
+        android:padding="4px"
+        android:text="password"
+        android:textColor="#AF1D1D"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="412dp" />
+        tools:layout_editor_absoluteY="407dp" />
+
+    <TextView
+        android:id="@+id/firstname_label"
+        android:layout_width="144dp"
+        android:layout_height="28dp"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="10sp"
+        android:text="Password"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="379dp" />
 
     <EditText
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFBCB7"
         android:ems="10"
+        android:fadingEdge="horizontal"
         android:inputType="text"
+        android:padding="3px"
         android:text="Name"
+        android:textColor="#C11919"
+        android:textStyle="bold"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="343dp" />
+        tools:layout_editor_absoluteY="337dp" />
+
+    <TextView
+        android:id="@+id/firstname_label"
+        android:layout_width="389dp"
+        android:layout_height="24dp"
+        android:fontFamily="serif"
+        android:lineSpacingExtra="0sp"
+        android:text="By Creating an account, you agree to ONLYBANDS' terms and conditions. This information can be found at our website"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="680dp" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif-condensed-light"
+        android:lineSpacingExtra="12sp"
         android:text="@string/loginBtn"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="468dp" />
+        android:textColor="#A02020"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="462dp" />
+
+    <TextView
+        android:id="@+id/firstname_label"
+        android:layout_width="144dp"
+        android:layout_height="28dp"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="10sp"
+        android:text="Username"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="309dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
