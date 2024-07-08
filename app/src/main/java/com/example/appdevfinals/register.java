@@ -1,5 +1,6 @@
 package com.example.appdevfinals;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,12 +40,19 @@ public class register extends AppCompatActivity {
 * */
 
     private EditText etFirstName, etLastName, etUsername, etPassword, etEmail;
-    private Button btnRegister, btnBack;
+    private Button btnRegister, btnBack, btnReadData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         etFirstName = findViewById(R.id.register_first_name_edit_text);
         etLastName = findViewById(R.id.register_last_name_edit_text);
@@ -53,13 +61,7 @@ public class register extends AppCompatActivity {
         etEmail = findViewById(R.id.register_email_edit_text);
         btnRegister = findViewById(R.id.register_button);
         btnBack = findViewById(R.id.back_button);
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        btnReadData = findViewById(R.id.read_data_button);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +69,25 @@ public class register extends AppCompatActivity {
                 saveUserData();
             }
         });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openLogin = new Intent(register.this, log_in.class);
+                startActivity(openLogin);
+            }
+        });
+
+        btnReadData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readUserData();
+            }
+        });
+
+
     }
+
 
     private void saveUserData() {
         String firstName = etFirstName.getText().toString().trim();

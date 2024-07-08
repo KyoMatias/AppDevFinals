@@ -13,11 +13,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class splash_screen extends AppCompatActivity {
 
-//    private TextView btnLogin;
     private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
@@ -28,6 +28,7 @@ public class splash_screen extends AppCompatActivity {
         });
 
         btnRegister = findViewById(R.id.splash_register_button);
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +44,6 @@ public class splash_screen extends AppCompatActivity {
 //                startActivity(openLoginScreen);
 //            }
 //        });
-
 
     }
 }
