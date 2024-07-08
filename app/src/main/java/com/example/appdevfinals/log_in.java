@@ -16,8 +16,8 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 public class log_in extends AppCompatActivity {
-    Button loginBtn;
-    EditText usernameEditTxt, passwordEditTxt;
+    private Button btnLogin;
+    private EditText etUsername, etPassword;
     int triesCounter = 10;
 
     @Override
@@ -41,16 +41,16 @@ public class log_in extends AppCompatActivity {
         if credentials are incorrect, after 10 tries, disable login button
         */
 
-        loginBtn = findViewById(id.login_btn);
-        usernameEditTxt = findViewById(id.username_edit_text);
-        passwordEditTxt = findViewById(id.password_edit_text);
+        btnLogin = findViewById(id.login_btn);
+        etUsername = findViewById(id.username_edit_text);
+        etPassword = findViewById(id.password_edit_text);
 
-        loginBtn.setOnClickListener(new View.OnClickListener(){
+        btnLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
 
                 Intent intent = new Intent(log_in.this, main_menu.class);
-                if (usernameEditTxt.getText().toString().equals("user") && passwordEditTxt.getText().toString().equals("1234")) {
+                if (etUsername.getText().toString().equals("user") && etPassword.getText().toString().equals("1234")) {
                     //I could create a custom toast that has a shorter duration
 //                    Toast.makeText(getApplicationContext(),"Redirecting",Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"Logging In...",Toast.LENGTH_SHORT).show();
@@ -60,7 +60,7 @@ public class log_in extends AppCompatActivity {
                     triesCounter--;
 
                     if (triesCounter == 0){
-                        loginBtn.setEnabled(false);
+                        btnLogin.setEnabled(false);
                     }
                 }
             }

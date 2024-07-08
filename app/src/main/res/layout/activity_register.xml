@@ -11,14 +11,16 @@
         android:id="@+id/bg_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/activity_form_page"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/activity_form_page" />
 
     <TextView
         android:id="@+id/register_password_label"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
         android:text="Password"
@@ -27,27 +29,31 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="368dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_password_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/register_password_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/register_password_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_username_edit_text" />
 
     <EditText
         android:id="@+id/register_password_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FEBBB6"
         android:ems="10"
         android:inputType="textPassword"
         android:padding="4px"
-        android:text="password"
         android:textColor="#AF1D1D"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_email_label"
+        app:layout_constraintStart_toStartOf="@+id/register_email_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_password_label" />
 
     <EditText
         android:id="@+id/register_last_name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFBCB7"
         android:ems="10"
@@ -56,13 +62,16 @@
         android:padding="3px"
         android:textColor="#C11919"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="245dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_username_label"
+        app:layout_constraintStart_toStartOf="@+id/register_first_name_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_last_name_label" />
 
     <TextView
         android:id="@+id/register_last_name_label"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
         android:text="Last Name"
@@ -71,13 +80,16 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="217dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_last_name_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/register_last_name_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/register_last_name_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_first_name_edit_text" />
 
     <EditText
         android:id="@+id/register_username_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFBCB7"
         android:ems="10"
@@ -86,13 +98,15 @@
         android:padding="3px"
         android:textColor="#C11919"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="321dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_password_label"
+        app:layout_constraintStart_toStartOf="@+id/register_password_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_username_label" />
 
     <EditText
         android:id="@+id/register_email_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFBCB7"
         android:ems="10"
@@ -101,13 +115,16 @@
         android:padding="3px"
         android:textColor="#C11919"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="469dp" />
+        app:layout_constraintBottom_toTopOf="@+id/back_button"
+        app:layout_constraintStart_toStartOf="@+id/register_button"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_label" />
 
     <TextView
         android:id="@+id/register_username_label"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
         android:text="Username"
@@ -116,13 +133,17 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="293dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_username_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/register_username_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/register_username_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_last_name_edit_text" />
 
     <TextView
         android:id="@+id/register_email_label"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
         android:text="Email"
@@ -131,13 +152,17 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="441dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_email_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/register_email_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/register_email_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_password_edit_text" />
 
     <TextView
         android:id="@+id/only_bands_label"
         android:layout_width="234dp"
-        android:layout_height="79dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="cursive"
         android:lineSpacingExtra="10sp"
         android:text="OnlyBands"
@@ -146,13 +171,17 @@
         android:textColor="#FFFFFF"
         android:textSize="48sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="44dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_first_name_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/register_first_name_label"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
         android:text="First Name"
@@ -161,13 +190,17 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_first_name_edit_text"
+        app:layout_constraintEnd_toEndOf="@+id/register_first_name_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/register_first_name_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
 
     <EditText
         android:id="@+id/register_first_name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="15dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFBCB7"
         android:ems="10"
@@ -176,13 +209,17 @@
         android:padding="3px"
         android:textColor="#C11919"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="176dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register_last_name_label"
+        app:layout_constraintStart_toStartOf="@+id/only_bands_label"
+        app:layout_constraintTop_toBottomOf="@+id/register_first_name_label" />
 
     <TextView
         android:id="@+id/disclaimer_label"
-        android:layout_width="389dp"
-        android:layout_height="24dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="22dp"
         android:fontFamily="serif"
         android:lineSpacingExtra="0sp"
         android:text="By Creating an account, you agree to ONLYBANDS' terms and conditions. This information can be found at our website"
@@ -191,19 +228,60 @@
         android:textColor="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="normal"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="594dp" />
+        app:layout_constraintBottom_toTopOf="@+id/read_data_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_button" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="26dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif-condensed-light"
         android:lineSpacingExtra="12sp"
         android:text="Register"
         android:textColor="#A02020"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="508dp" />
+        app:layout_constraintEnd_toStartOf="@+id/back_button"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="38dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif-condensed-light"
+        android:lineSpacingExtra="12sp"
+        android:text="@string/back_button_text"
+        android:textColor="#A02020"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/disclaimer_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/register_button"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
+
+    <Button
+        android:id="@+id/read_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="43dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif-condensed-light"
+        android:lineSpacingExtra="12sp"
+        android:text="@string/read_data_button"
+        android:textColor="#A02020"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disclaimer_label" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
