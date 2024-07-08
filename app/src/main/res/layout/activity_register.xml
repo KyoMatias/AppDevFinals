@@ -8,7 +8,7 @@
     tools:context=".register">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/bg_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/activity_form_page"
@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
-        android:id="@+id/firstname_label3"
+        android:id="@+id/register_password_label"
         android:layout_width="144dp"
         android:layout_height="28dp"
         android:fontFamily="monospace"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="368dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/register_password_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -45,7 +45,7 @@
         tools:layout_editor_absoluteY="396dp" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/register_last_name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -60,7 +60,7 @@
         tools:layout_editor_absoluteY="245dp" />
 
     <TextView
-        android:id="@+id/firstname_label2"
+        android:id="@+id/register_last_name_label"
         android:layout_width="144dp"
         android:layout_height="28dp"
         android:fontFamily="monospace"
@@ -75,7 +75,7 @@
         tools:layout_editor_absoluteY="217dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/register_username_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -90,7 +90,7 @@
         tools:layout_editor_absoluteY="321dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/register_email_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -105,7 +105,7 @@
         tools:layout_editor_absoluteY="469dp" />
 
     <TextView
-        android:id="@+id/firstname_label"
+        android:id="@+id/register_username_label"
         android:layout_width="144dp"
         android:layout_height="28dp"
         android:fontFamily="monospace"
@@ -120,7 +120,7 @@
         tools:layout_editor_absoluteY="293dp" />
 
     <TextView
-        android:id="@+id/firstname_label"
+        android:id="@+id/register_email_label"
         android:layout_width="144dp"
         android:layout_height="28dp"
         android:fontFamily="monospace"
@@ -135,7 +135,7 @@
         tools:layout_editor_absoluteY="441dp" />
 
     <TextView
-        android:id="@+id/firstname_label"
+        android:id="@+id/only_bands_label"
         android:layout_width="234dp"
         android:layout_height="79dp"
         android:fontFamily="cursive"
@@ -150,7 +150,7 @@
         tools:layout_editor_absoluteY="44dp" />
 
     <TextView
-        android:id="@+id/firstname_label"
+        android:id="@+id/register_first_name_label"
         android:layout_width="144dp"
         android:layout_height="28dp"
         android:fontFamily="monospace"
@@ -165,7 +165,7 @@
         tools:layout_editor_absoluteY="148dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/register_first_name_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -180,7 +180,7 @@
         tools:layout_editor_absoluteY="176dp" />
 
     <TextView
-        android:id="@+id/firstname_label"
+        android:id="@+id/disclaimer_label"
         android:layout_width="389dp"
         android:layout_height="24dp"
         android:fontFamily="serif"
@@ -195,7 +195,7 @@
         tools:layout_editor_absoluteY="594dp" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"

@@ -49,7 +49,7 @@ public class log_in extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                Intent intent = new Intent(log_in.this, MainActivity.class);
+                Intent intent = new Intent(log_in.this, main_menu.class);
                 if (usernameEditTxt.getText().toString().equals("user") && passwordEditTxt.getText().toString().equals("1234")) {
                     //I could create a custom toast that has a shorter duration
 //                    Toast.makeText(getApplicationContext(),"Redirecting",Toast.LENGTH_SHORT).show();

@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D07474"
-    tools:context=".MainActivity">
+    tools:context=".main_menu">
 
     <TextView
-        android:id="@+id/firstname_label"
+        android:id="@+id/only_bands_header_label"
         android:layout_width="217dp"
         android:layout_height="70dp"
         android:fontFamily="cursive"
@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteY="650dp" />
 
     <ImageButton
-        android:id="@+id/settingsbutton"
+        android:id="@+id/settings_button"
         android:layout_width="79dp"
         android:layout_height="81dp"
         android:scaleX="0.4"
@@ -42,7 +42,7 @@
         tools:layout_editor_absoluteY="648dp" />
 
     <ImageButton
-        android:id="@+id/inboxbutton"
+        android:id="@+id/inbox_button"
         android:layout_width="79dp"
         android:layout_height="81dp"
         android:scaleX="0.3"
@@ -52,7 +52,7 @@
         tools:layout_editor_absoluteY="649dp" />
 
     <ImageButton
-        android:id="@+id/accountbutton"
+        android:id="@+id/header_account_button"
         android:layout_width="79dp"
         android:layout_height="81dp"
         android:scaleX="0.3"
@@ -62,7 +62,7 @@
         tools:layout_editor_absoluteY="4dp" />
 
     <ImageButton
-        android:id="@+id/accountbutton"
+        android:id="@+id/app_bar_account_button"
         android:layout_width="79dp"
         android:layout_height="81dp"
         android:scaleX="0.3"
@@ -72,12 +72,12 @@
         tools:layout_editor_absoluteY="648dp" />
 
     <ImageButton
-        android:id="@+id/reelsbutton"
+        android:id="@+id/reels_button"
         android:layout_width="79dp"
         android:layout_height="81dp"
         android:scaleX="0.4"
         android:scaleY="0.4"
-        app:srcCompat="@drawable/reels"
+        app:srcCompat="@drawable/reelsico"
         tools:layout_editor_absoluteX="217dp"
         tools:layout_editor_absoluteY="648dp" />
 
