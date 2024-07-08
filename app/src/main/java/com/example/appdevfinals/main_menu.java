@@ -19,7 +19,7 @@ public class main_menu extends AppCompatActivity {
 * 4. Status posts should display the user's profile picture and name beside the post
 * 5. Like and comment posts
 * 6. Previous status posts should be viewable by the user
-* 7. A simulated feed
+* 7. A simulated feed (HardCoded)
 *
 * Need to use lists and list views for the posts and simulated feed
 *
