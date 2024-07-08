@@ -12,38 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppDevFinals"
         tools:targetApi="31">
-
-        <!--    Splash Screen (1)    -->
+        <activity
+            android:name=".profile_screen"
+            android:exported="false" />
+        <activity
+            android:name=".settings_screen"
+            android:exported="false" /> <!-- Splash Screen (1) -->
         <activity
             android:name=".splash_screen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Register Screen (2) -->
+        </activity> <!-- Register Screen (2) -->
         <activity
-            android:name=".register"
-            android:exported="true" />
-
-        <!-- Login Screen (3) -->
+            android:name=".register_screen"
+            android:exported="true" /> <!-- Login Screen (3) -->
         <activity
-            android:name=".log_in"
-            android:exported="true" />
-
-        <!-- Main Menu Screen (4) -->
+            android:name=".login_screen"
+            android:exported="true" /> <!-- Main Menu Screen (4) -->
         <activity
-            android:name=".main_menu"
-            android:exported="true"/>
-
-        <!-- Profile Screen (5) -->
-        <activity
-            android:name=".profile"
-            android:exported="true" />
-
+            android:name=".main_menu_screen"
+            android:exported="true" /> <!-- Profile Screen (5) -->
     </application>
 
 </manifest>

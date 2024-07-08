@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#D16B6B"
     android:backgroundTint="#FEBBB6"
-    tools:context=".log_in">
+    tools:context=".login_screen">
 
     <ImageView
         android:id="@+id/bg_image_view"

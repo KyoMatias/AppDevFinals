@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class register extends AppCompatActivity {
+public class register_screen extends AppCompatActivity {
 
 /*
 * TO DO
@@ -47,7 +47,7 @@ public class register extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_screen);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -73,7 +73,7 @@ public class register extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openLogin = new Intent(register.this, log_in.class);
+                Intent openLogin = new Intent(register_screen.this, login_screen.class);
                 startActivity(openLogin);
             }
         });
@@ -100,7 +100,7 @@ public class register extends AppCompatActivity {
                 password.isEmpty() || email.isEmpty()) {
             // Show error message if any field is empty
             // For simplicity, we use a Toast message here
-            Toast.makeText(register.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(register_screen.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -112,10 +112,10 @@ public class register extends AppCompatActivity {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
             writer.write(userData);
             writer.close();
-            Toast.makeText(register.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(register_screen.this, "User registered successfully", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(register.this, "Failed to save user data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(register_screen.this, "Failed to save user data", Toast.LENGTH_SHORT).show();
         }
     }
 
