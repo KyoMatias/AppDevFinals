@@ -43,32 +43,17 @@ public class main_menu_screen extends AppCompatActivity {
 
         ibHeaderAccount = findViewById(R.id.main_header_account_button);
         ibAppbarAccount = findViewById(R.id.main_appbar_account_button);
+
         ibSettings = findViewById(R.id.main_settings_button);
 //        ibLogout = findViewById(R.id.main_logout_button);
 
-        ibHeaderAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openProfile = new Intent(main_menu_screen.this, profile_screen.class);
-                startActivity(openProfile);
-            }
-        });
+        Intent openProfile = new Intent(main_menu_screen.this, profile_screen.class);
+        Intent openSettings = new Intent(main_menu_screen.this, settings_screen.class);
 
-        ibAppbarAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openProfile = new Intent(main_menu_screen.this, profile_screen.class);
-                startActivity(openProfile);
-            }
-        });
+        ibHeaderAccount.setOnClickListener(v -> startActivity(openProfile));
+        ibAppbarAccount.setOnClickListener(v -> startActivity(openProfile));
+        ibSettings.setOnClickListener(v -> startActivity(openSettings));
 
-        ibSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openSettings = new Intent(main_menu_screen.this, settings_screen.class);
-                startActivity(openSettings);
-            }
-        });
 
     }
 }

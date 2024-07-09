@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="97dp"
+        android:layout_marginEnd="75dp"
         android:layout_marginBottom="574dp"
         android:fontFamily="cursive"
         android:lineSpacingExtra="10sp"
@@ -69,11 +69,11 @@
 
     <ImageButton
         android:id="@+id/main_header_account_button"
-        android:layout_width="0dp"
+        android:layout_width="105dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="563dp"
         android:scaleX="0.3"
         android:scaleY="0.3"
