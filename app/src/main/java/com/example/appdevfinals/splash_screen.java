@@ -1,6 +1,10 @@
 package com.example.appdevfinals;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +16,7 @@ public class splash_screen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
@@ -20,5 +25,25 @@ public class splash_screen extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button btnRegister = findViewById(R.id.splash_register_button);
+        TextView btnLogin = findViewById(R.id.login_text_label);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openRegistrationScreen = new Intent(splash_screen.this, register_screen.class);
+                startActivity(openRegistrationScreen);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
+                startActivity(openLoginScreen);
+            }
+        });
+
     }
 }

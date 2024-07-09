@@ -9,16 +9,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/splash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/splash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".splash">
 
 
         <TextView
-            android:id="@+id/firstname_label"
+            android:id="@+id/only_bands_label"
             android:layout_width="163dp"
-            android:layout_height="47dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="434dp"
             android:fontFamily="cursive"
             android:lineSpacingExtra="10sp"
             android:text="OnlyBands"
@@ -27,124 +32,73 @@
             android:textColor="#FFFFFF"
             android:textSize="34sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="124dp"
-            tools:layout_editor_absoluteY="434dp" />
+            app:layout_constraintBottom_toTopOf="@+id/splash_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/splash_label"
             android:layout_width="214dp"
-            android:layout_height="46dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="54dp"
             android:fontFamily="sans-serif-light"
             android:lineSpacingExtra="24sp"
             android:text="Where Music Connects Us."
             android:textAlignment="center"
             android:textColor="#FF9797"
             android:typeface="monospace"
-            tools:layout_editor_absoluteX="98dp"
-            tools:layout_editor_absoluteY="481dp" />
+            app:layout_constraintBottom_toTopOf="@+id/splash_register_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/splash_register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
             android:backgroundTint="#8F2F2F"
             android:text="Get Started"
-            app:strokeColor="#000000"
-            tools:layout_editor_absoluteX="145dp"
-            tools:layout_editor_absoluteY="554dp" />
+            app:layout_constraintBottom_toTopOf="@+id/text_label_1"
+            app:layout_constraintStart_toStartOf="@+id/text_label_1"
+            app:layout_constraintTop_toBottomOf="@+id/splash_label"
+            app:strokeColor="#000000" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/bg_guitar_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="6dp" />
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
-
+            android:id="@+id/text_label_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Already have an account?"
             android:textColor="#FFFFFF"
-            tools:layout_editor_absoluteX="128dp"
-            tools:layout_editor_absoluteY="602dp" />
+            app:layout_constraintBottom_toTopOf="@+id/login_text_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splash_register_button" />
 
+        <!--     Change this to Login Button   -->
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/login_text_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="96dp"
+            android:clickable="true"
             android:text="Login Here"
-            android:textColor="#E69C9C"
+            android:textColor="#B3E9F0"
             android:textSize="10sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="181dp"
-            tools:layout_editor_absoluteY="621dp" />
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/splash_register_button"
+            app:layout_constraintTop_toBottomOf="@+id/text_label_1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/firstname_label"
-        android:layout_width="163dp"
-        android:layout_height="47dp"
-        android:fontFamily="cursive"
-        android:lineSpacingExtra="10sp"
-        android:text="OnlyBands"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="434dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="214dp"
-        android:layout_height="46dp"
-        android:fontFamily="sans-serif-light"
-        android:lineSpacingExtra="24sp"
-        android:text="Where Music Connects Us."
-        android:textAlignment="center"
-        android:textColor="#FF9797"
-        android:typeface="monospace"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="481dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#8F2F2F"
-        android:text="Get Started"
-        app:strokeColor="#000000"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="554dp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="6dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Already have an account?"
-        android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="602dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login Here"
-        android:textColor="#E69C9C"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="621dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

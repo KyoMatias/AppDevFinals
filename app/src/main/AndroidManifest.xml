@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,31 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppDevFinals"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".profile_screen"
+            android:exported="false" />
+        <activity
+            android:name=".settings_screen"
+            android:exported="false" /> <!-- Splash Screen (1) -->
         <activity
             android:name=".splash_screen"
-            android:exported="false" />
-        <activity
-            android:name=".activity_splash"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Register Screen (2) -->
         <activity
-            android:name=".main_menu"
-            android:exported="false" />
+            android:name=".register_screen"
+            android:exported="true" /> <!-- Login Screen (3) -->
         <activity
-            android:name=".register"
-            android:exported="false" />
+            android:name=".login_screen"
+            android:exported="true" /> <!-- Main Menu Screen (4) -->
         <activity
-            android:name=".log_in"
-            android:exported="true" />
+            android:name=".main_menu_screen"
+            android:exported="true" /> <!-- Profile Screen (5) -->
     </application>
 
 </manifest>
