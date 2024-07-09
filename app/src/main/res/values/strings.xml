@@ -4,4 +4,10 @@
     <string name="login">Log In</string>
     <string name="back_button_text">Back</string>
     <string name="read_data_button">Read Txt</string>
+    <string name="OnlyBands">AppTitle</string>
+    <string name="WhereMusicConnectsUs">TagLine</string>
+    <string name="Get_Started">GetStartedBut</string>
+    <string name="AlreadHaveAnAccount">AccPresentCheck</string>
+    <string name="Login_Here">LoginHereHypLink</string>
+
 </resources>
