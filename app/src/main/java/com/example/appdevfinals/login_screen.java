@@ -3,18 +3,13 @@ package com.example.appdevfinals;
 import static com.example.appdevfinals.R.*;
 
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,15 +18,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -64,14 +53,15 @@ public class login_screen extends AppCompatActivity {
             return insets;
         });
 
+        mAuth = FirebaseAuth.getInstance();
+
         Intent openRegistrationScreen = new Intent(login_screen.this, register_screen.class);
 
-        btnLogin = findViewById(id.login_btn);
+        btnLogin = findViewById(id.login_button);
+        btnRegister = findViewById(id.login_register_button);
         etEmail = findViewById(id.email_edit_text);
         etPassword = findViewById(id.password_edit_text);
 
-        //On Click, Validate
-        //btnLogin.setOnClickListener(v -> validateLogin());
         btnRegister.setOnClickListener(v -> startActivity(openRegistrationScreen));
 
         if (mAuth != null) {
@@ -98,8 +88,8 @@ public class login_screen extends AppCompatActivity {
     }
 
     private void loginUser(String email, String pass) {
-        loadingBar.setMessage("Logging In....");
-        loadingBar.show();
+//        loadingBar.setMessage("Logging In....");
+//        loadingBar.show();
 
         mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -107,7 +97,7 @@ public class login_screen extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
 
-                    loadingBar.dismiss();
+//                    loadingBar.dismiss();
                     FirebaseUser user = mAuth.getCurrentUser();
 
                     if (task.getResult().getAdditionalUserInfo().isNewUser()) {
@@ -133,14 +123,14 @@ public class login_screen extends AppCompatActivity {
                     startActivity(mainIntent);
                     finish();
                 } else {
-                    loadingBar.dismiss();
+//                    loadingBar.dismiss();
                     Toast.makeText(login_screen.this, "Login Failed", Toast.LENGTH_LONG).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                loadingBar.dismiss();
+//                loadingBar.dismiss();
                 Toast.makeText(login_screen.this, "Error Occurred", Toast.LENGTH_LONG).show();
             }
         });

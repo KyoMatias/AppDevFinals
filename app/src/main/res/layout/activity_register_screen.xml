@@ -7,14 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".register_screen">
 
-    <ImageView
-        android:id="@+id/bg_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/activity_form_page" />
-
     <!--    <TextView-->
     <!--        android:id="@+id/register_first_name_label"-->
     <!--        android:layout_width="143dp"-->
@@ -77,12 +69,32 @@
 
     <!--Username-->
 
+    <ImageView
+        android:id="@+id/bg_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/activity_form_page" />
+
+    <TextView
+        android:id="@+id/text_label_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="10dp"
+        android:text="Already have an account??"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/back_button"
+        app:layout_constraintStart_toStartOf="@+id/register_email_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_button" />
+
     <TextView
         android:id="@+id/only_bands_label"
         android:layout_width="234dp"
         android:layout_height="75dp"
-        android:layout_marginTop="179dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="cursive"
         android:lineSpacingExtra="10sp"
         android:text="OnlyBands"
@@ -113,12 +125,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
 
+    <!--Username End-->
+
+    <!--Password-->
     <EditText
         android:id="@+id/register_username_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="15dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFBCB7"
         android:ems="10"
@@ -130,9 +145,10 @@
         app:layout_constraintBottom_toTopOf="@+id/register_password_label"
         app:layout_constraintStart_toStartOf="@+id/only_bands_label"
         app:layout_constraintTop_toBottomOf="@+id/register_username_label" />
-    <!--Username End-->
 
-    <!--Password-->
+    <!--Password End-->
+
+    <!--Email-->
     <TextView
         android:id="@+id/register_password_label"
         android:layout_width="143dp"
@@ -154,7 +170,7 @@
         android:id="@+id/register_password_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="16dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FEBBB6"
         android:ems="10"
@@ -162,11 +178,11 @@
         android:padding="4px"
         android:textColor="#AF1D1D"
         app:layout_constraintBottom_toTopOf="@+id/register_email_label"
-        app:layout_constraintStart_toStartOf="@+id/register_email_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/register_username_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/register_password_label" />
-    <!--Password End-->
 
-    <!--Email-->
+    <!--Email End-->
+
     <EditText
         android:id="@+id/register_email_edit_text"
         android:layout_width="wrap_content"
@@ -180,8 +196,8 @@
         android:padding="3px"
         android:textColor="#C11919"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/back_button"
-        app:layout_constraintStart_toStartOf="@+id/register_button"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintStart_toStartOf="@+id/register_password_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/register_email_label" />
 
     <TextView
@@ -200,49 +216,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_password_edit_text" />
-    <!--Email End-->
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="26dp"
-        android:backgroundTint="#FFFFFF"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="27dp"
+        android:backgroundTint="#8F2F2F"
         android:fontFamily="sans-serif-condensed-light"
         android:lineSpacingExtra="12sp"
         android:text="Register"
-        android:textColor="#A02020"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/back_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_label_1"
+        app:layout_constraintEnd_toEndOf="@+id/text_label_1"
         app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
 
     <Button
-        android:id="@+id/back_button"
+        android:id="@+id/register_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="78dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif-condensed-light"
         android:lineSpacingExtra="12sp"
-        android:text="@string/back_button_text"
+        android:text="Sign in Here"
         android:textColor="#A02020"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/disclaimer_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/register_button"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
+        app:layout_constraintEnd_toEndOf="@+id/text_label_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_label_1" />
 
     <TextView
         android:id="@+id/disclaimer_label"
-        android:layout_width="0dp"
+        android:layout_width="389dp"
         android:layout_height="0dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="111dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="serif"
         android:lineSpacingExtra="0sp"
         android:text="By Creating an account, you agree to ONLYBANDS' terms and conditions. This information can be found at our website"
@@ -252,8 +263,7 @@
         android:textSize="10sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bg_image_view"
         app:layout_constraintTop_toBottomOf="@+id/back_button" />
 
     <!--    <Button
