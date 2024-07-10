@@ -27,8 +27,6 @@ public class splash_screen extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
 
-//        FirebaseApp.initializeApp();
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -43,16 +41,16 @@ public class splash_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
                 FirebaseUser user = mAuth.getCurrentUser();
-                if (user == null) {
-                    Intent openMainMenu = new Intent(splash_screen.this, login_screen.class);
-                    startActivity(openMainMenu);
-                    finish();
-                } else {
-                    Toast.makeText(splash_screen.this, "No Account Found", Toast.LENGTH_SHORT).show();
+                if (user != null) {
+                    mAuth.signOut();
                 }
+                startActivity(openLoginScreen);
+                finish();
             }
         }, 1000);
+
 
 /*        Button btnRegister = findViewById(R.id.splash_register_button);
         TextView btnLogin = findViewById(R.id.login_text_label);

@@ -4,4 +4,6 @@
     <string name="login">Log In</string>
     <string name="back_button_text">Back</string>
     <string name="read_data_button">Read Txt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

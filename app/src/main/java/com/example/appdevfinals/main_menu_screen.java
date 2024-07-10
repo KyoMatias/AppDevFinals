@@ -1,9 +1,7 @@
 package com.example.appdevfinals;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
+import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,49 +9,76 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class main_menu_screen extends AppCompatActivity {
-/*
-* TO DO
-*
-* Implement the ff functions:
-* 1. On click of profile picture, REDIRECT to profile screen
-* 2. Status Post
-* 3. Status posts need to accept text, images, videos, and audio files
-* 4. Status posts should display the user's profile picture and name beside the post
-* 5. Like and comment posts
-* 6. Previous status posts should be viewable by the user
-* 7. A simulated feed (HardCoded)
-*
-* Need to use lists and list views for the posts and simulated feed
-*
-* */
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 
-    private ImageButton ibHeaderAccount, ibAppbarAccount, ibSettings, ibLogout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+public class main_menu_screen extends AppCompatActivity {
+
+    private FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    String myUID;
+    BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main_menu_screen);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        ibHeaderAccount = findViewById(R.id.main_header_account_button);
-        ibAppbarAccount = findViewById(R.id.main_appbar_account_button);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        ibSettings = findViewById(R.id.main_settings_button);
-//        ibLogout = findViewById(R.id.main_logout_button);
+        navigationView = findViewById(R.id.navigation);
+        navigationView.setOnNavigationItemSelectedListener(selectedListener);
 
-        Intent openProfile = new Intent(main_menu_screen.this, profile_screen.class);
-        Intent openSettings = new Intent(main_menu_screen.this, settings_screen.class);
-
-        ibHeaderAccount.setOnClickListener(v -> startActivity(openProfile));
-        ibAppbarAccount.setOnClickListener(v -> startActivity(openProfile));
-        ibSettings.setOnClickListener(v -> startActivity(openSettings));
-
+        main_menu_fragment fragment = new main_menu_fragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content, fragment, "");
+        fragmentTransaction.commit();
 
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener selectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+            int menuItemId = menuItem.getItemId();
+
+            if (menuItemId == R.id.nav_home) {
+                main_menu_fragment fragment = new main_menu_fragment();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.content, fragment, "");
+                fragmentTransaction.commit();
+                return true;
+            } else if (menuItemId == R.id.nav_profile) {
+                profile_fragment fragment1 = new profile_fragment();
+                FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.replace(R.id.content, fragment1);
+                fragmentTransaction1.commit();
+                return true;
+            } else if (menuItemId == R.id.nav_inbox) {
+                inbox_fragment listFragment = new inbox_fragment();
+                FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction3.replace(R.id.content, listFragment, "");
+                fragmentTransaction3.commit();
+                return true;
+            } else if (menuItemId == R.id.nav_post) {
+                post_fragment fragment4 = new post_fragment();
+                FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction4.replace(R.id.content, fragment4, "");
+                fragmentTransaction4.commit();
+                return true;
+            }
+            return false;
+        }
+    };
 }
