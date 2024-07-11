@@ -5,10 +5,60 @@
     android:layout_height="match_parent"
     tools:context=".post_fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="2dp">
+
+
+        <EditText
+            android:id="@+id/post_title_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="Enter Title"
+            android:minHeight="80dp"
+            android:padding="10dp"
+            android:singleLine="true" />
+            <!--android:background="@drawable/edit"-->
+
+        <ImageView
+            android:id="@+id/post_image_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="15dp"
+
+            android:src="@drawable/accountico" />
+            <!--android:background="@drawable/edit"-->
+        <EditText
+            android:id="@+id/post_desc_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="start"
+            android:hint="Enter Description"
+            android:inputType="textCapSentences|textMultiLine"
+            android:minHeight="120dp"
+            android:padding="10dp"
+            android:singleLine="true" />
+
+            <!--android:background="@drawable/edit"-->
+
+        <Button
+            android:id="@+id/post_upload_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="20sp"
+            android:text="Post"
+            android:textAlignment="center" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

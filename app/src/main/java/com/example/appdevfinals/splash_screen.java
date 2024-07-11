@@ -41,35 +41,18 @@ public class splash_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
+
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
-                    mAuth.signOut();
+                    Intent openMainMenu = new Intent(splash_screen.this, main_menu_screen.class);
+                    startActivity(openMainMenu);
+                    finish();
                 }
+                Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
                 startActivity(openLoginScreen);
                 finish();
             }
         }, 1000);
-
-
-/*        Button btnRegister = findViewById(R.id.splash_register_button);
-        TextView btnLogin = findViewById(R.id.login_text_label);
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openRegistrationScreen = new Intent(splash_screen.this, register_screen.class);
-                startActivity(openRegistrationScreen);
-            }
-        });
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
-                startActivity(openLoginScreen);
-            }
-        });*/
 
     }
 }

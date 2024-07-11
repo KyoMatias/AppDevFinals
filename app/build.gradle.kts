@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    id("com.google.gms.google-services")
-
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -43,6 +42,7 @@ dependencies {
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.inappmessaging)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
     testImplementation(libs.junit)

@@ -108,7 +108,10 @@ public class login_screen extends AppCompatActivity {
                         hashMap.put("uid", uid);
                         hashMap.put("name", "");
                         hashMap.put("onlineStatus", "online");
-                        hashMap.put("profilePicture", "");
+                        hashMap.put("typingTo", "noOne");
+                        hashMap.put("phone", "");
+                        hashMap.put("image", "");
+                        hashMap.put("cover", "");
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
                         // store the value in Database in "Users" Node
@@ -117,7 +120,7 @@ public class login_screen extends AppCompatActivity {
                         // storing the value in Firebase
                         reference.child(uid).setValue(hashMap);
                     }
-                    Toast.makeText(login_screen.this, "Registered User " + user.getEmail(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(login_screen.this, "Logged In!" + user.getEmail(), Toast.LENGTH_LONG).show();
                     Intent mainIntent = new Intent(login_screen.this, main_menu_screen.class);
                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(mainIntent);
@@ -135,58 +138,4 @@ public class login_screen extends AppCompatActivity {
             }
         });
     }
-
-/*    private void validateLogin() {
-        String loginUsername = etEmail.getText().toString().trim();
-        String loginPassword = etPassword.getText().toString().trim();
-        Intent openMainMenu = new Intent(login_screen.this, main_menu_screen.class);
-        Intent assignUsername = new Intent();
-        Intent assignProfilePicture = new Intent();
-
-        //Error Handling for empty fields
-        if (loginUsername.isEmpty() || loginPassword.isEmpty()) {
-            Toast.makeText(login_screen.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        //Validating login credentials
-        try {
-            FileInputStream fis = openFileInput("user_data.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-            String line;
-            boolean isAuthenticated = false;
-            String profilePictureFileName = null;
-
-            while ((line = reader.readLine()) != null) {
-                String[] userDetails = line.split(",");
-                if (userDetails.length == 6) {
-                    String savedUsername = userDetails[2];
-                    String savedPassword = userDetails[3];
-
-                    if (savedUsername.equals(loginUsername) && savedPassword.equals(loginPassword)) {
-                        isAuthenticated = true;
-                        profilePictureFileName = userDetails[5];
-                        break;
-                    }
-                }
-            }
-
-            reader.close();
-
-            if (isAuthenticated) {
-                Toast.makeText(login_screen.this, "Login successful", Toast.LENGTH_SHORT).show();
-                assignUsername.putExtra("username", loginUsername);
-                assignProfilePicture.putExtra("profilePictureFileName", profilePictureFileName);
-                startActivity(openMainMenu);
-            } else {
-                Toast.makeText(login_screen.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-                triesCounter--;
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(login_screen.this, "Failed to read user data", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
 }

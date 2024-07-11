@@ -47,6 +47,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -59,6 +61,7 @@ public class edit_profile_screen extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     StorageReference storageReference;
+//    String storagePath = "Users_Profile_Covers_images/";
     String storagePath = "Users_Profile_Cover_image/";
     String uid;
     ImageView set;
@@ -72,6 +75,7 @@ public class edit_profile_screen extends AppCompatActivity {
     String storagePermission[];
     Uri imageUri;
     String profileOrCoverPhoto;
+    StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,12 +148,6 @@ public class edit_profile_screen extends AppCompatActivity {
             }
         });
 
-        if (!checkPermissions()) {
-            requestPermissions();
-        } else {
-            // Permissions are already granted, proceed with your logic
-            proceedWithAppLogic();
-        }
     }
 
     @Override
@@ -193,7 +191,9 @@ public class edit_profile_screen extends AppCompatActivity {
 
     // requesting for storage permission
     private void requestStoragePermission() {
-        requestPermissions(storagePermission, STORAGE_REQUEST);
+
+        ActivityCompat.requestPermissions(edit_profile_screen.this, storagePermission, STORAGE_REQUEST);
+//        requestPermissions(storagePermission, STORAGE_REQUEST);
     }
 
     // checking camera permission, if given then we can click image using our camera
@@ -201,12 +201,12 @@ public class edit_profile_screen extends AppCompatActivity {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
         boolean result1 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
 
-        
         return result && result1;
     }
 
     private void requestCameraPermission() {
-        requestPermissions(cameraPermission, CAMERA_REQUEST);
+        ActivityCompat.requestPermissions(edit_profile_screen.this, cameraPermission, CAMERA_REQUEST);
+//        requestPermissions(cameraPermission, CAMERA_REQUEST);
     }
 
     private void showPasswordChangeDialog() {
@@ -353,13 +353,13 @@ public class edit_profile_screen extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 // if access is not given then we will request for permission
                 if (which == 0) {
-                    if (!checkCameraPermission()) {
+                    if (checkCameraPermission()) {
                         requestCameraPermission();
                     } else {
                         pickFromCamera();
                     }
                 } else if (which == 1) {
-                    if (!checkStoragePermission()) {
+                    if (checkStoragePermission()) {
                         requestStoragePermission();
                     } else {
                         pickFromGallery();
@@ -378,6 +378,7 @@ public class edit_profile_screen extends AppCompatActivity {
                 uploadProfileCoverPhoto(imageUri);
             }
             if (requestCode == IMAGE_PICKCAMERA_REQUEST) {
+                imageUri = data.getData();
                 uploadProfileCoverPhoto(imageUri);
             }
         }
@@ -420,7 +421,7 @@ public class edit_profile_screen extends AppCompatActivity {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.Images.Media.TITLE, "Temp_pic");
         contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Temp Description");
-        imageUri = this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
         Intent camerIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         camerIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
         startActivityForResult(camerIntent, IMAGE_PICKCAMERA_REQUEST);
@@ -430,6 +431,7 @@ public class edit_profile_screen extends AppCompatActivity {
     private void pickFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(galleryIntent, IMAGEPICK_GALLERY_REQUEST);
     }
 
@@ -439,14 +441,14 @@ public class edit_profile_screen extends AppCompatActivity {
 
         // We are taking the filepath as storagepath + firebaseauth.getUid()+".png"
         String filePathName = storagePath + "" + profileOrCoverPhoto + "_" + firebaseUser.getUid();
-        StorageReference storageReference1 = storageReference.child(filePathName);
+        String test = imageUri.toString();
+        StorageReference storageReference1 = storageReference.child(test);
         storageReference1.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while (!uriTask.isSuccessful()) ;
 
-                // We will get the url of our image using uritask
                 final Uri downloadUri = uriTask.getResult();
                 if (uriTask.isSuccessful()) {
 
@@ -468,14 +470,14 @@ public class edit_profile_screen extends AppCompatActivity {
                     });
                 } else {
                     pd.dismiss();
-                    Toast.makeText(edit_profile_screen.this, "Error", Toast.LENGTH_LONG).show();
+                    Toast.makeText(edit_profile_screen.this, "Idk what error this is", Toast.LENGTH_LONG).show();
                 }
             }
-        }).addOnFailureListener(new OnFailureListener() {
+            }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 pd.dismiss();
-                Toast.makeText(edit_profile_screen.this, "Error", Toast.LENGTH_LONG).show();
+                Toast.makeText(edit_profile_screen.this, "Failure Error", Toast.LENGTH_LONG).show();
             }
         });
     }
