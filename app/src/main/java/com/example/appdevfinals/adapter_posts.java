@@ -104,7 +104,10 @@ public class adapter_posts extends RecyclerView.Adapter<com.example.appdevfinals
         String uemail = modelPosts.get(holder.getAdapterPosition()).getUemail();
         final String uimage = modelPosts.get(holder.getAdapterPosition()).getUimage();
         String uname = modelPosts.get(holder.getAdapterPosition()).getUname();
-        ptime = "0";
+
+//        When creating a new post, ptime is not null, but when liking posts it becomes null.
+//        ptime = "0";
+
         Calendar calendar = Calendar.getInstance(Locale.ENGLISH);
         calendar.setTimeInMillis(Long.parseLong(ptime));
         String timedate = DateFormat.format("dd/MM/yyyy hh:mm aa", calendar).toString();
@@ -119,7 +122,7 @@ public class adapter_posts extends RecyclerView.Adapter<com.example.appdevfinals
         holder.tvTime.setText(timedate);
         holder.tvLike.setText(plike + " Likes");
         holder.tvComments.setText(pcomments + " Comments");
-        setLikes(holder, ptime);
+        setLikes(holder, pid);
 
         try {
             Glide.with(context).load(udp).into(holder.tvPicture);
@@ -229,7 +232,7 @@ public class adapter_posts extends RecyclerView.Adapter<com.example.appdevfinals
     }
 
     private void setLikes(final MyHolder holder, final String pid) {
-        liekeref.addValueEventListener(new ValueEventListener() {
+        postref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int currentPosition = holder.getAdapterPosition();
