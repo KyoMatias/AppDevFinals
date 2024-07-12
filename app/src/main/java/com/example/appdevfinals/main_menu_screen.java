@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,10 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class main_menu_screen extends AppCompatActivity {
-
     private FirebaseAuth firebaseAuth;
-
-    Button editProfileBtn;
     FirebaseUser firebaseUser;
     String myUID;
     BottomNavigationView navigationView;
@@ -50,7 +46,7 @@ public class main_menu_screen extends AppCompatActivity {
         fragmentTransaction.replace(R.id.content, fragment, "");
         fragmentTransaction.commit();
 
-        Intent openEdit = new Intent(main_menu_screen.this, edit_profile_screen.class);
+//        Intent openEdit = new Intent(main_menu_screen.this, edit_profile_screen.class);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener selectedListener = menuItem -> {
@@ -58,28 +54,22 @@ public class main_menu_screen extends AppCompatActivity {
         int menuItemId = menuItem.getItemId();
 
         if (menuItemId == R.id.nav_home) {
-            main_menu_fragment fragment = new main_menu_fragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.content, fragment, "");
-            fragmentTransaction.commit();
+            main_menu_fragment menuFragment = new main_menu_fragment();
+            FragmentTransaction menuFragmentTransaction = getSupportFragmentManager().beginTransaction();
+            menuFragmentTransaction.replace(R.id.content, menuFragment, "");
+            menuFragmentTransaction.commit();
             return true;
         } else if (menuItemId == R.id.nav_profile) {
-            profile_fragment fragment1 = new profile_fragment();
-            FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction1.replace(R.id.content, fragment1);
-            fragmentTransaction1.commit();
-            return true;
-        } else if (menuItemId == R.id.nav_inbox) {
-            inbox_fragment listFragment = new inbox_fragment();
-            FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction3.replace(R.id.content, listFragment, "");
-            fragmentTransaction3.commit();
+            profile_fragment profileFragment = new profile_fragment();
+            FragmentTransaction profileFragmentTransaction = getSupportFragmentManager().beginTransaction();
+            profileFragmentTransaction.replace(R.id.content, profileFragment);
+            profileFragmentTransaction.commit();
             return true;
         } else if (menuItemId == R.id.nav_post) {
-            post_fragment fragment4 = new post_fragment();
-            FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction4.replace(R.id.content, fragment4, "");
-            fragmentTransaction4.commit();
+            new_post_fragment newPostFragment = new new_post_fragment();
+            FragmentTransaction newPostFragmentTransaction = getSupportFragmentManager().beginTransaction();
+            newPostFragmentTransaction.replace(R.id.content, newPostFragment, "");
+            newPostFragmentTransaction.commit();
             return true;
         }
         return false;

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".post_fragment">
+    tools:context=".new_post_fragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,26 +15,23 @@
             android:orientation="vertical"
             android:layout_margin="2dp">
 
-
         <EditText
             android:id="@+id/post_title_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:hint="Enter Title"
             android:minHeight="80dp"
             android:padding="10dp"
-            android:singleLine="true" />
-            <!--android:background="@drawable/edit"-->
+            android:singleLine="true"
+            android:background="@drawable/ic_edit"/>
 
         <ImageView
             android:id="@+id/post_image_image_view"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="15dp"
+            android:src="@drawable/ic_edit_image" />
 
-            android:src="@drawable/accountico" />
-            <!--android:background="@drawable/edit"-->
         <EditText
             android:id="@+id/post_desc_edit_text"
             android:layout_width="match_parent"
@@ -45,9 +42,8 @@
             android:inputType="textCapSentences|textMultiLine"
             android:minHeight="120dp"
             android:padding="10dp"
-            android:singleLine="true" />
-
-            <!--android:background="@drawable/edit"-->
+            android:singleLine="true"
+            android:background="@drawable/ic_edit"/>
 
         <Button
             android:id="@+id/post_upload_button"
@@ -58,7 +54,7 @@
             android:layout_marginTop="20sp"
             android:text="Post"
             android:textAlignment="center" />
+
         </LinearLayout>
     </ScrollView>
-
 </FrameLayout>

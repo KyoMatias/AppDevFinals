@@ -1,11 +1,5 @@
 package com.example.appdevfinals;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +26,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class profile_fragment extends Fragment {
-
     private FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;

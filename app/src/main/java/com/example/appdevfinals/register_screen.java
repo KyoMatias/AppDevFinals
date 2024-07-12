@@ -11,11 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -29,19 +26,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
-
-
 import java.util.HashMap;
 public class register_screen extends AppCompatActivity {
 
     private EditText etEmail, etPassword, etUsername;
     private Button btnRegister;
-    private TextView existaccount;
+    private TextView existAccount;
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +55,11 @@ public class register_screen extends AppCompatActivity {
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
         etEmail = findViewById(R.id.register_email_edit_text);
-        etPassword = findViewById(R.id.register_password_edit_text);
         etUsername = findViewById(R.id.register_username_edit_text);
+        etPassword = findViewById(R.id.register_password_edit_text);
 
         btnRegister = findViewById(R.id.register_button);
-        existaccount = findViewById(R.id.register_login_button);
+        existAccount = findViewById(R.id.register_login_button);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +79,7 @@ public class register_screen extends AppCompatActivity {
             }
         });
 
-        existaccount.setOnClickListener(new View.OnClickListener() {
+        existAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(register_screen.this, login_screen.class));
@@ -95,35 +87,34 @@ public class register_screen extends AppCompatActivity {
         });
 
     }
-    private void registerUser(String email, final String pass, final String uname) {
+    private void registerUser(String emaill, final String pass, final String uname) {
 //        progressDialog.show();
-        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+        mAuth.createUserWithEmailAndPassword(emaill, pass).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
 //                    progressDialog.dismiss();
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String email = user.getEmail();
-                    String uid = user.getUid();
-                    HashMap<Object, String> hashMap = new HashMap<>();
-                    hashMap.put("email", email);
-                    hashMap.put("uid", uid);
-                    hashMap.put("name", uname);
-                    hashMap.put("onlineStatus", "online");
-                    hashMap.put("typingTo", "noOne");
-                    hashMap.put("image", "");
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference reference = database.getReference("Users");
-                    reference.child(uid).setValue(hashMap);
-                    Toast.makeText(register_screen.this, "Registered User " + user.getEmail(), Toast.LENGTH_LONG).show();
-                    Intent mainIntent = new Intent(register_screen.this, main_menu_screen.class);
-                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(mainIntent);
-                    finish();
-                } else {
+                FirebaseUser user = mAuth.getCurrentUser();
+                String email = user.getEmail();
+                String uid = user.getUid();
+
+                HashMap<Object, String> hashMap = new HashMap<>();
+                hashMap.put("email", email);
+                hashMap.put("uid", uid);
+                hashMap.put("name", uname);
+                hashMap.put("onlineStatus", "online");
+                hashMap.put("typingTo", "noOne");
+                hashMap.put("image", "");
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference reference = database.getReference("Users");
+                reference.child(uid).setValue(hashMap);
+                Toast.makeText(register_screen.this, "Registered User " + user.getEmail(), Toast.LENGTH_LONG).show();
+                Intent mainIntent = new Intent(register_screen.this, main_menu_screen.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(mainIntent);
+                finish();
+            } else {
 //                    progressDialog.dismiss();
-                    Toast.makeText(register_screen.this, "Error", Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(register_screen.this, "Error", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

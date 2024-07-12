@@ -1,26 +1,25 @@
 package com.example.appdevfinals;
 
-import static com.example.appdevfinals.R.*;
-
-
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.HashMap;
-
-import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,15 +30,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 
 public class login_screen extends AppCompatActivity {
 
-    FirebaseUser currentUser;
+    private FirebaseAuth mAuth;
     private Button btnLogin, btnRegister;
     private EditText etEmail, etPassword;
-    private FirebaseAuth mAuth;
+    FirebaseUser currentUser;
     private ProgressDialog loadingBar;
-    int triesCounter = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +52,15 @@ public class login_screen extends AppCompatActivity {
             return insets;
         });
 
+        etEmail = findViewById(R.id.email_edit_text);
+        etPassword = findViewById(R.id.password_edit_text);
+
         mAuth = FirebaseAuth.getInstance();
 
         Intent openRegistrationScreen = new Intent(login_screen.this, register_screen.class);
 
-        btnLogin = findViewById(id.login_button);
-        btnRegister = findViewById(id.login_register_button);
-        etEmail = findViewById(id.email_edit_text);
-        etPassword = findViewById(id.password_edit_text);
-
+        btnLogin = findViewById(R.id.login_button);
+        btnRegister = findViewById(R.id.login_register_button);
         btnRegister.setOnClickListener(v -> startActivity(openRegistrationScreen));
 
         if (mAuth != null) {
@@ -91,44 +90,43 @@ public class login_screen extends AppCompatActivity {
 //        loadingBar.setMessage("Logging In....");
 //        loadingBar.show();
 
-        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
 
-                if (task.isSuccessful()) {
+            if (task.isSuccessful()) {
 
 //                    loadingBar.dismiss();
-                    FirebaseUser user = mAuth.getCurrentUser();
+                FirebaseUser user = mAuth.getCurrentUser();
 
-                    if (task.getResult().getAdditionalUserInfo().isNewUser()) {
-                        String email = user.getEmail();
-                        String uid = user.getUid();
-                        HashMap<Object, String> hashMap = new HashMap<>();
-                        hashMap.put("email", email);
-                        hashMap.put("uid", uid);
-                        hashMap.put("name", "");
-                        hashMap.put("onlineStatus", "online");
-                        hashMap.put("typingTo", "noOne");
-                        hashMap.put("phone", "");
-                        hashMap.put("image", "");
-                        hashMap.put("cover", "");
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                if (task.getResult().getAdditionalUserInfo().isNewUser()) {
+                    String email1 = user.getEmail();
+                    String uid = user.getUid();
 
-                        // store the value in Database in "Users" Node
-                        DatabaseReference reference = database.getReference("Users");
+                    HashMap<Object, String> hashMap = new HashMap<>();
+                    hashMap.put("email", email1);
+                    hashMap.put("uid", uid);
+                    hashMap.put("name", "");
+                    hashMap.put("onlineStatus", "online");
+                    hashMap.put("typingTo", "noOne");
+                    hashMap.put("phone", "");
+                    hashMap.put("image", "");
+                    hashMap.put("cover", "");
 
-                        // storing the value in Firebase
-                        reference.child(uid).setValue(hashMap);
-                    }
-//                    Toast.makeText(login_screen.this, "Logged In!" + user.getEmail(), Toast.LENGTH_LONG).show();
-                    Intent mainIntent = new Intent(login_screen.this, main_menu_screen.class);
-                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(mainIntent);
-                    finish();
-                } else {
-//                    loadingBar.dismiss();
-                    Toast.makeText(login_screen.this, "Login Failed", Toast.LENGTH_LONG).show();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                    // store the value in Database in "Users" Node
+                    DatabaseReference reference = database.getReference("Users");
+
+                    // storing the value in Firebase
+                    reference.child(uid).setValue(hashMap);
                 }
+
+                Intent openMainMenu = new Intent(login_screen.this, main_menu_screen.class);
+                openMainMenu.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(openMainMenu);
+                finish();
+            } else {
+//                    loadingBar.dismiss();
+                Toast.makeText(login_screen.this, "Login Failed", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

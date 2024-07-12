@@ -2,120 +2,122 @@ package com.example.appdevfinals;
 
 public class model_post {
 
-//    String pTime, pComments;
-//    String title;
-//    String userDp;
-//    String userEmail;
-//    String uID;
-//    String userImage;
-//    String username, pLike;
-//    String pid;
+    String ptime, pcomments, plike;
+    String title, description;
+    String udp;
+
+    public String getPtime() {
+        return ptime;
+    }
+
+    public void setPtime(String ptime) {
+        this.ptime = ptime;
+    }
+
+    public String getPcomments() {
+        return pcomments;
+    }
+
+    public void setPcomments(String pcomments) {
+        this.pcomments = pcomments;
+    }
+
+    public String getPlike() {
+        return plike;
+    }
+
+    public void setPlike(String plike) {
+        this.plike = plike;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUdp() {
+        return udp;
+    }
+
+    public void setUdp(String udp) {
+        this.udp = udp;
+    }
+
+    public String getUemail() {
+        return uemail;
+    }
+
+    public void setUemail(String uemail) {
+        this.uemail = uemail;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getUimage() {
+        return uimage;
+    }
+
+    public void setUimage(String uimage) {
+        this.uimage = uimage;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    String uemail;
+    String uid;
+    String uimage;
+    String uname;
+    String pid;
+
     public model_post(){
     }
 
-    String description;
+    public model_post(String description, String pid, String ptime, String pComments, String title, String udp, String uemail, String uid, String userImage, String userName, String plike) {
 
-//    public model_post(String description, String pid, String pTime, String pComments, String title, String uDp, String userEmail, String uID, String userImage, String userName, String pLike) {
-//
-//        this.description = description;
-//        this.pid = pid;
-//        this.pTime = pTime;
-//        this.pComments = pComments;
-//        this.title = title;
-//        this.userDp = uDp;
-//        this.userEmail = userEmail;
-//        this.uID = uID;
-//        this.userImage = userImage;
-//        this.username = userName;
-//        this.pLike = pLike;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
-//
-//    public String getPid() {
-//        return pid;
-//    }
-//
-//    public void setPid(String pid) {
-//        this.pid = pid;
-//    }
-//
-//    public String getPostTime() {
-//        return pTime;
-//    }
-//
-//    public void setPostTime(String pTime) {
-//        this.pTime = pTime;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public String getUserDp() {
-//        return userDp;
-//    }
-//
-//    public void setUserDp(String userDp) {
-//        this.userDp = userDp;
-//    }
-//
-//    public String getUserEmail() {
-//        return userEmail;
-//    }
-//
-//    public void setUserEmail(String userEmail) {
-//        this.userEmail = userEmail;
-//    }
-//
-//    public String getUID() {
-//        return uID;
-//    }
-//
-//    public void setUID(String uID) {
-//        this.uID = uID;
-//    }
-//
-//    public String getUserImage() {
-//        return userImage;
-//    }
-//
-//    public void setUserImage(String userImage) {
-//        this.userImage = userImage;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-//
-//    public String getPostLike() {
-//        return pLike;
-//    }
-//
-//    public void setPostLike(String plike) {
-//        this.pLike = plike;
-//    }
-//
-//    public String getPostComments() {
-//        return pComments;
-//    }
-//
-//    public void setPostComments(String pComments) {
-//        this.pComments = pComments;
-//    }
+        this.description = description;
+        this.pid = pid;
+        this.ptime = ptime;
+        this.pcomments = pComments;
+        this.title = title;
+        this.udp = udp;
+        this.uemail = uemail;
+        this.uid = uid;
+        this.uimage = userImage;
+        this.uname = userName;
+        this.plike = plike;
+    }
+
+
 
 }

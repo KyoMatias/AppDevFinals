@@ -1,5 +1,7 @@
 package com.example.appdevfinals;
 
+import static android.content.ContentValues.TAG;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +24,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,14 +47,13 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
-public class post_fragment extends Fragment {
+public class new_post_fragment extends Fragment {
 
-    public post_fragment() {
+    public new_post_fragment() {
         // Required empty public constructor
     }
-
-    FirebaseAuth firebaseAuth;
     FirebaseUser mFirebaseUser;
+    FirebaseAuth firebaseAuth;
     EditText title, des;
     private static final int CAMERA_REQUEST = 100;
     private static final int STORAGE_REQUEST = 200;
@@ -59,47 +61,47 @@ public class post_fragment extends Fragment {
     String storagePermission[];
     ProgressDialog pd;
     ImageView image;
-    String edititle, editdes, editimage;
+    String editTitle, editDec, editImage;
     private static final int IMAGEPICK_GALLERY_REQUEST = 300;
     private static final int IMAGE_PICKCAMERA_REQUEST = 400;
-
     Uri imageuri = null;
     String name, email, uid, dp;
     DatabaseReference databaseReference;
-    Button upload;
+    Button btnUpload;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         firebaseAuth = FirebaseAuth.getInstance();
+        View view = inflater.inflate(R.layout.fragment_new_post, container, false);
+
         mFirebaseUser = firebaseAuth.getCurrentUser();
         uid = mFirebaseUser.getUid();
-
-
-        View view = inflater.inflate(R.layout.fragment_post, container, false);
 
         title = view.findViewById(R.id.post_title_edit_text);
         des = view.findViewById(R.id.post_desc_edit_text);
         image = view.findViewById(R.id.post_image_image_view);
-        upload = view.findViewById(R.id.post_upload_button);
+        btnUpload = view.findViewById(R.id.post_upload_button);
         pd = new ProgressDialog(getContext());
         pd.setCanceledOnTouchOutside(false);
         Intent intent = getActivity().getIntent();
 
         // Retrieving the user data like name ,email and profile pic using query
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        Query query = databaseReference.orderByChild("email").equalTo(email);
-        query.addValueEventListener(new ValueEventListener() {
+        email = mFirebaseUser.getEmail();
+        Query userQuery = databaseReference.orderByChild("email").equalTo(email);
+
+        userQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                    name = dataSnapshot1.child("name").getValue().toString();
-                    email = "" + dataSnapshot1.child("email").getValue();
-                    dp = dataSnapshot1.child("image").getValue().toString();
+                for (DataSnapshot userSnapShot : dataSnapshot.getChildren()) {
+                    name = userSnapShot.child("name").getValue().toString();
+                    email = "" + userSnapShot.child("email").getValue(); //This returns nothing
+                    dp = userSnapShot.child("image").getValue().toString();
 
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -118,28 +120,28 @@ public class post_fragment extends Fragment {
             }
         });
 
-        // Now we will upload out blog
-        upload.setOnClickListener(new View.OnClickListener() {
+        //Upload Function
+        btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String titl = "" + title.getText().toString().trim();
                 String description = "" + des.getText().toString().trim();
 
-                // If empty set error
+                //Checks if fields are empty
                 if (TextUtils.isEmpty(titl)) {
                     title.setError("Title Cant be empty");
                     Toast.makeText(getContext(), "Title can't be left empty", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // If empty set error
+
                 if (TextUtils.isEmpty(description)) {
                     des.setError("Description Cant be empty");
                     Toast.makeText(getContext(), "Description can't be left empty", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                // If empty show error
+                //Requires an image to be uploaded.
                 if (imageuri == null) {
                     Toast.makeText(getContext(), "Select an Image", Toast.LENGTH_LONG).show();
                     return;
@@ -155,23 +157,19 @@ public class post_fragment extends Fragment {
         String options[] = {"Camera", "Gallery"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Pick Image From");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // check for the camera and storage permission if
-                // not given the request for permission
-                if (which == 0) {
-                    if (checkCameraPermission()) {
-                        requestCameraPermission();
-                    } else {
-                        pickFromCamera();
-                    }
-                } else if (which == 1) {
-                    if (checkStoragePermission()) {
-                        requestStoragePermission();
-                    } else {
-                        pickFromGallery();
-                    }
+        builder.setItems(options, (dialog, which) -> {
+            //Check permissions
+            if (which == 0) {
+                if (checkCameraPermission()) {
+                    requestCameraPermission();
+                } else {
+                    pickFromCamera();
+                }
+            } else if (which == 1) {
+                if (checkStoragePermission()) {
+                    requestStoragePermission();
+                } else {
+                    pickFromGallery();
                 }
             }
         });
@@ -191,10 +189,10 @@ public class post_fragment extends Fragment {
             case CAMERA_REQUEST: {
                 if (grantResults.length > 0) {
                     boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    boolean writeStorageAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
                     // if request access given the pick data
-                    if (camera_accepted && writeStorageaccepted) {
+                    if (camera_accepted && writeStorageAccepted) {
                         pickFromCamera();
                     } else {
                         Toast.makeText(getContext(), "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
@@ -206,10 +204,10 @@ public class post_fragment extends Fragment {
             break;
             case STORAGE_REQUEST: {
                 if (grantResults.length > 0) {
-                    boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean writeStorageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
                     // if request access given the pick data
-                    if (writeStorageaccepted) {
+                    if (writeStorageAccepted) {
                         pickFromGallery();
                     } else {
                         Toast.makeText(getContext(), "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
@@ -243,7 +241,8 @@ public class post_fragment extends Fragment {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MediaStore.Images.Media.TITLE, "Temp_pic");
         contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Temp Description");
-        imageuri = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+//        imageuri = getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+        imageuri = requireActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
         Intent camerIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         camerIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageuri);
         startActivityForResult(camerIntent, IMAGE_PICKCAMERA_REQUEST);
@@ -261,7 +260,7 @@ public class post_fragment extends Fragment {
         // show the progress dialog box
         pd.setMessage("Publishing Post");
         pd.show();
-        final String timestamp = String.valueOf(System.currentTimeMillis());
+        final String timestamp = String.valueOf(System.currentTimeMillis()); //Maybe we can alter this a bit?
         String filepathname = "Posts/" + "post" + timestamp;
         Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -270,51 +269,54 @@ public class post_fragment extends Fragment {
 
         // initialising the storage reference for updating the data
         StorageReference storageReference1 = FirebaseStorage.getInstance().getReference().child(filepathname);
-        storageReference1.putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                // getting the url of image uploaded
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isSuccessful()) ;
-                String downloadUri = uriTask.getResult().toString();
-                if (uriTask.isSuccessful() && mFirebaseUser != null) {
-                    // if task is successful the update the data into firebase
+        storageReference1.putBytes(data).addOnSuccessListener(taskSnapshot -> {
+            // getting the url of image uploaded
+            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+            while (!uriTask.isSuccessful()) ;
+            String downloadUri = uriTask.getResult().toString();
+            if (uriTask.isSuccessful() ) {
+                // if task is successful the update the data into firebase
+                HashMap<Object, String> hashMap = new HashMap<>();
+                hashMap.put("description", description);
+                hashMap.put("pcomments", "0");
+                hashMap.put("plike", "0");
+                hashMap.put("ptime", timestamp);
+                hashMap.put("title", titl);
+                hashMap.put("udp", dp); //Missing in Firebase
+                hashMap.put("uemail", email);
+                hashMap.put("uimage", downloadUri);
+                hashMap.put("uid", uid);
+                hashMap.put("uname", name);
 
-                    HashMap<Object, String> hashMap = new HashMap<>();
-                    hashMap.put("description", description);
-                    hashMap.put("pcomments", "0");
-                    hashMap.put("plike", "0");
-                    hashMap.put("ptime", timestamp);
-                    hashMap.put("title", titl);
-                    hashMap.put("udp", dp); //Missing in Firebase
-                    hashMap.put("uemail", email); //Missing in Firebase
-                    hashMap.put("uimage", downloadUri);
-                    hashMap.put("uid", uid);
-                    hashMap.put("uname", name); //Missing in Firebase
+                Log.d(TAG, "Uploading post with the following data: ");
+                Log.d(TAG, "Title: " + titl);
+                Log.d(TAG, "Description: " + description);
+                Log.d(TAG, "Timestamp: " + timestamp);
+                Log.d(TAG, "Download URI: " + downloadUri);
+                Log.d(TAG, "UID: " + uid);
+                Log.d(TAG, "Name: " + name);
+                Log.d(TAG, "Email: " + email);
+                Log.d(TAG, "DP: " + dp);
 
-                    // set the data into firebase and then empty the title ,description and image data
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
-                    databaseReference.child(timestamp).setValue(hashMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    pd.dismiss();
-                                    Toast.makeText(getContext(), "Post Published", Toast.LENGTH_LONG).show();
-                                    title.setText("");
-                                    des.setText("");
-                                    image.setImageURI(null);
-                                    imageuri = null;
-                                    startActivity(new Intent(getContext(), main_menu_screen.class));
-                                    getActivity().finish();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    pd.dismiss();
-                                    Toast.makeText(getContext(), "Post Failed to Publish", Toast.LENGTH_LONG).show();
-                                }
-                            });
-                }
+                // set the data into firebase and then empty the title ,description and image data
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
+                databaseReference.child(timestamp).setValue(hashMap)
+                        .addOnSuccessListener(aVoid -> {
+                            pd.dismiss();
+                            Toast.makeText(getContext(), "Post Published", Toast.LENGTH_LONG).show();
+                            title.setText("");
+                            des.setText("");
+                            image.setImageURI(null);
+                            imageuri = null;
+                            startActivity(new Intent(getContext(), main_menu_screen.class));
+                            getActivity().finish();
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                pd.dismiss();
+                                Toast.makeText(getContext(), "Post Failed to Publish", Toast.LENGTH_LONG).show();
+                            }
+                        });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

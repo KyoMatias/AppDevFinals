@@ -5,11 +5,10 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="164dp">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +27,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/accountico" />
+                    android:src="@drawable/ic_profile" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -41,7 +40,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Name"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorBlack"
                         android:textSize="20sp" />
 
                     <TextView
@@ -57,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:src="@drawable/accountico" />
+                    android:src="@drawable/ic_more" />
 
             </LinearLayout>
 
@@ -74,13 +73,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textColor="#000000" />
+                android:textColor="@color/colorBlack" />
 
             <ImageView
                 android:id="@+id/row_image_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF" />
+                android:background="@color/colorWhite" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="1.2K Likes"
-                    android:textColor="#000000" />
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/row_comment_tv"
@@ -102,7 +101,7 @@
                     android:layout_weight="1"
                     android:text="1.2K Comment"
                     android:textAlignment="textEnd"
-                    android:textColor="#000000" />
+                    android:textColor="@color/colorPrimary" />
             </LinearLayout>
 
             <View
@@ -122,10 +121,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autoLink="all"
-                    android:background="#FFFFFF"
+                    android:background="@color/colorWhite"
                     android:padding="5dp"
-                    android:drawableStart="@drawable/reelsico"
-                    android:drawableLeft="@drawable/reelsico"
+                    android:drawableStart="@drawable/ic_like"
+                    android:drawableLeft="@drawable/ic_like"
                     android:text="Like" />
 
                 <Button
@@ -134,16 +133,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autoLink="all"
-                    android:background="#FFFFFF"
-
+                    android:background="@color/colorWhite"
+                    android:drawableStart="@drawable/ic_comment"
+                    android:drawableLeft="@drawable/ic_comment"
                     android:padding="5dp"
                     android:text="Comment" />
 
-                <!--These are supposed to be icons for the Like Button-->
-<!--                android:drawableStart="@drawable/ic_comment"-->
-<!--                android:drawableLeft="@drawable/ic_comment"-->
             </LinearLayout>
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

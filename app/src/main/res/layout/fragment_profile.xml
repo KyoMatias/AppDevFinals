@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".profile_fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile Fragment" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,7 +21,7 @@
                     android:id="@+id/cavertv"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:background="#db5461ff"
+                    android:background="@color/colorPrimaryDark"
                     android:scaleType="fitXY">
                 </ImageView>
 
@@ -44,9 +38,9 @@
                         android:layout_height="120dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginStart="20dp"
-                        android:background="#FFFFFF"
+                        android:background="@color/colorPrimary"
                         android:padding="5dp"
-                        android:src="@drawable/accountico" />
+                        android:src="@drawable/ic_profile" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -61,7 +55,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/colorWhite"
                             android:textSize="25sp" />
 
                         <TextView
@@ -70,13 +64,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginLeft="5dp"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/colorWhite" />
+
                     </LinearLayout>
-
                 </LinearLayout>
-
             </RelativeLayout>
-
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -87,7 +79,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
-            android:src="@drawable/accountico" />
+            android:src="@drawable/ic_edit" />
 
     </RelativeLayout>
 

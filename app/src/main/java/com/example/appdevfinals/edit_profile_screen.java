@@ -47,30 +47,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.ListResult;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 
 public class edit_profile_screen extends AppCompatActivity {
-
     private FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     StorageReference storageReference;
-//    String storagePath = "Users_Profile_Covers_images/";
     String storagePath = "Users_Profile_Cover_image/";
     String uid;
     ImageView set;
     TextView profilePic, editName, editPassword;
     ProgressDialog pd;
-    private static final int CAMERA_REQUEST = 101;
-    private static final int STORAGE_REQUEST = 102;
-    private static final int IMAGEPICK_GALLERY_REQUEST = 103;
-    private static final int IMAGE_PICKCAMERA_REQUEST = 104;
+    private static final int CAMERA_REQUEST = 100;
+    private static final int STORAGE_REQUEST = 200;
+    private static final int IMAGEPICK_GALLERY_REQUEST = 300;
+    private static final int IMAGE_PICKCAMERA_REQUEST = 400;
     String cameraPermission[];
     String storagePermission[];
     Uri imageUri;
@@ -151,6 +147,40 @@ public class edit_profile_screen extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Query query = databaseReference.orderByChild("email").equalTo(firebaseUser.getEmail());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+
+                    String image = "" + dataSnapshot1.child("image").getValue();
+
+                    try {
+                        Glide.with(edit_profile_screen.this).load(image).into(set);
+                    } catch (Exception e) {
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        editPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd.setMessage("Changing Password");
+                showPasswordChangeDialog();
+            }
+        });
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         Query query = databaseReference.orderByChild("email").equalTo(firebaseUser.getEmail());
@@ -193,7 +223,7 @@ public class edit_profile_screen extends AppCompatActivity {
     private void requestStoragePermission() {
 
         ActivityCompat.requestPermissions(edit_profile_screen.this, storagePermission, STORAGE_REQUEST);
-//        requestPermissions(storagePermission, STORAGE_REQUEST);
+        requestPermissions(storagePermission, STORAGE_REQUEST);
     }
 
     // checking camera permission, if given then we can click image using our camera
@@ -206,69 +236,52 @@ public class edit_profile_screen extends AppCompatActivity {
 
     private void requestCameraPermission() {
         ActivityCompat.requestPermissions(edit_profile_screen.this, cameraPermission, CAMERA_REQUEST);
-//        requestPermissions(cameraPermission, CAMERA_REQUEST);
+        requestPermissions(cameraPermission, CAMERA_REQUEST);
     }
 
     private void showPasswordChangeDialog() {
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_update_password, null);
-        final EditText oldPass = view.findViewById(R.id.change_pw_old_pw_log);
-        final EditText newPass = view.findViewById(R.id.change_pw_new_pw_log);
-        Button editpass = view.findViewById(R.id.change_pw_update_pw_button);
+        final EditText etOldPass = view.findViewById(R.id.change_pw_old_pw_log);
+        final EditText etNewPass = view.findViewById(R.id.change_pw_new_pw_log);
+        Button btnEditPass = view.findViewById(R.id.change_pw_update_pw_button);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(view);
         final AlertDialog dialog = builder.create();
         dialog.show();
-        editpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String oldp = oldPass.getText().toString().trim();
-                String newp = newPass.getText().toString().trim();
-                if (TextUtils.isEmpty(oldp)) {
-                    Toast.makeText(edit_profile_screen.this, "Current Password cant be empty", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(newp)) {
-                    Toast.makeText(edit_profile_screen.this, "New Password cant be empty", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                dialog.dismiss();
-                updatePassword(oldp, newp);
+        btnEditPass.setOnClickListener(v -> {
+            String oldPassword = etOldPass.getText().toString().trim();
+            String newPassword = etNewPass.getText().toString().trim();
+            if (TextUtils.isEmpty(oldPassword)) {
+                Toast.makeText(edit_profile_screen.this, "Current Password cant be empty", Toast.LENGTH_LONG).show();
+                return;
             }
+            if (TextUtils.isEmpty(newPassword)) {
+                Toast.makeText(edit_profile_screen.this, "New Password cant be empty", Toast.LENGTH_LONG).show();
+                return;
+            }
+            dialog.dismiss();
+            updatePassword(oldPassword, newPassword);
         });
     }
 
     // Now we will check that if old password was authenticated
     // correctly then we will update the new password
-    private void updatePassword(String oldp, final String newp) {
+    private void updatePassword(String oldPassword, final String newPassword) {
         pd.show();
         final FirebaseUser user = firebaseAuth.getCurrentUser();
-        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), oldp);
+        AuthCredential authCredential = EmailAuthProvider.getCredential(user.getEmail(), oldPassword);
         user.reauthenticate(authCredential)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        user.updatePassword(newp)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        pd.dismiss();
-                                        Toast.makeText(edit_profile_screen.this, "Changed Password", Toast.LENGTH_LONG).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        pd.dismiss();
-                                        Toast.makeText(edit_profile_screen.this, "Failed", Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        pd.dismiss();
-                        Toast.makeText(edit_profile_screen.this, "Failed", Toast.LENGTH_LONG).show();
-                    }
-                });
+                .addOnSuccessListener(aVoid -> user.updatePassword(newPassword)
+                        .addOnSuccessListener(aVoid1 -> {
+                            pd.dismiss();
+                            Toast.makeText(edit_profile_screen.this, "Changed Password", Toast.LENGTH_LONG).show();
+                        }).addOnFailureListener(e -> {
+                            pd.dismiss();
+                            Toast.makeText(edit_profile_screen.this, "Failed", Toast.LENGTH_LONG).show();
+                        })).addOnFailureListener(e -> {
+                            pd.dismiss();
+                            Toast.makeText(edit_profile_screen.this, "Failed", Toast.LENGTH_LONG).show();
+                        });
     }
 
     private void showNamePhoneUpdate(final String key) {
@@ -284,52 +297,44 @@ public class edit_profile_screen extends AppCompatActivity {
         layout.addView(editText);
         builder.setView(layout);
 
-        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                final String value = editText.getText().toString().trim();
-                if (!TextUtils.isEmpty(value)) {
-                    pd.show();
+        builder.setPositiveButton("Update", (dialog, which) -> {
+            final String value = editText.getText().toString().trim();
+            if (!TextUtils.isEmpty(value)) {
+                pd.show();
 
-                    // Here we are updating the new name
-                    HashMap<String, Object> result = new HashMap<>();
-                    result.put(key, value);
-                    databaseReference.child(firebaseUser.getUid()).updateChildren(result).addOnSuccessListener(new OnSuccessListener<Void>() {
+                // Here we are updating the new name
+                HashMap<String, Object> result = new HashMap<>();
+                result.put(key, value);
+                databaseReference.child(firebaseUser.getUid()).updateChildren(result).addOnSuccessListener(aVoid -> {
+                    pd.dismiss();
+                    // after updated we will show updated
+                    Toast.makeText(edit_profile_screen.this, "Updated", Toast.LENGTH_LONG).show();
+
+                }).addOnFailureListener(e -> {
+                    pd.dismiss();
+                    Toast.makeText(edit_profile_screen.this, "Unable to update", Toast.LENGTH_LONG).show();
+                });
+
+                if (key.equals("name")) {
+                    final DatabaseReference databaser = FirebaseDatabase.getInstance().getReference("Posts");
+                    Query query = databaser.orderByChild("uid").equalTo(uid);
+                    query.addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            pd.dismiss();
-
-                            // after updated we will show updated
-                            Toast.makeText(edit_profile_screen.this, " updated ", Toast.LENGTH_LONG).show();
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                String child = databaser.getKey();
+                                dataSnapshot1.getRef().child("uname").setValue(value);
+                            }
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
+
                         @Override
-                        public void onFailure(@NonNull Exception e) {
-                            pd.dismiss();
-                            Toast.makeText(edit_profile_screen.this, "Unable to update", Toast.LENGTH_LONG).show();
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
                         }
                     });
-                    if (key.equals("name")) {
-                        final DatabaseReference databaser = FirebaseDatabase.getInstance().getReference("Posts");
-                        Query query = databaser.orderByChild("uid").equalTo(uid);
-                        query.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                    String child = databaser.getKey();
-                                    dataSnapshot1.getRef().child("uname").setValue(value);
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                } else {
-                    Toast.makeText(edit_profile_screen.this, "Unable to update", Toast.LENGTH_LONG).show();
                 }
+            } else {
+                Toast.makeText(edit_profile_screen.this, "Unable to update", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -348,22 +353,19 @@ public class edit_profile_screen extends AppCompatActivity {
         String options[] = {"Camera", "Gallery"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Pick Image From");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // if access is not given then we will request for permission
-                if (which == 0) {
-                    if (checkCameraPermission()) {
-                        requestCameraPermission();
-                    } else {
-                        pickFromCamera();
-                    }
-                } else if (which == 1) {
-                    if (checkStoragePermission()) {
-                        requestStoragePermission();
-                    } else {
-                        pickFromGallery();
-                    }
+        builder.setItems(options, (dialog, which) -> {
+            // if access is not given then we will request for permission
+            if (which == 0) {
+                if (checkCameraPermission()) {
+                    requestCameraPermission();
+                } else {
+                    pickFromCamera();
+                }
+            } else if (which == 1) {
+                if (checkStoragePermission()) {
+                    requestStoragePermission();
+                } else {
+                    pickFromGallery();
                 }
             }
         });
@@ -387,7 +389,6 @@ public class edit_profile_screen extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case CAMERA_REQUEST: {
@@ -431,54 +432,39 @@ public class edit_profile_screen extends AppCompatActivity {
     private void pickFromGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK);
         galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+//        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(galleryIntent, IMAGEPICK_GALLERY_REQUEST);
     }
 
     // We will upload the image from here.
     private void uploadProfileCoverPhoto(final Uri uri) {
         pd.show();
-
         // We are taking the filepath as storagepath + firebaseauth.getUid()+".png"
         String filePathName = storagePath + "" + profileOrCoverPhoto + "_" + firebaseUser.getUid();
-        String test = imageUri.toString();
-        StorageReference storageReference1 = storageReference.child(test);
-        storageReference1.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isSuccessful()) ;
+        StorageReference storageReference1 = storageReference.child(filePathName);
+        storageReference1.putFile(uri).addOnSuccessListener(taskSnapshot -> {
+            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+            while (!uriTask.isSuccessful()) ;
+            final Uri downloadUri = uriTask.getResult();
+            if (uriTask.isSuccessful()) {
 
-                final Uri downloadUri = uriTask.getResult();
-                if (uriTask.isSuccessful()) {
-
-                    // updating our image url into the realtime database
-                    HashMap<String, Object> hashMap = new HashMap<>();
-                    hashMap.put(profileOrCoverPhoto, downloadUri.toString());
-                    databaseReference.child(firebaseUser.getUid()).updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            pd.dismiss();
-                            Toast.makeText(edit_profile_screen.this, "Updated", Toast.LENGTH_LONG).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            pd.dismiss();
-                            Toast.makeText(edit_profile_screen.this, "Error Updating ", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                } else {
+                // updating our image url into the realtime database
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put(profileOrCoverPhoto, downloadUri.toString());
+                databaseReference.child(firebaseUser.getUid()).updateChildren(hashMap).addOnSuccessListener(aVoid -> {
                     pd.dismiss();
-                    Toast.makeText(edit_profile_screen.this, "Idk what error this is", Toast.LENGTH_LONG).show();
-                }
-            }
-            }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(edit_profile_screen.this, "Profile Picture Updated", Toast.LENGTH_LONG).show();
+                }).addOnFailureListener(e -> {
+                    pd.dismiss();
+                    Toast.makeText(edit_profile_screen.this, "Error Updating Profile Picture", Toast.LENGTH_LONG).show();
+                });
+            } else {
                 pd.dismiss();
-                Toast.makeText(edit_profile_screen.this, "Failure Error", Toast.LENGTH_LONG).show();
+                Toast.makeText(edit_profile_screen.this, "Error", Toast.LENGTH_LONG).show();
             }
+        }).addOnFailureListener(e -> {
+            pd.dismiss();
+            Toast.makeText(edit_profile_screen.this, "Failure Error", Toast.LENGTH_LONG).show();
         });
     }
 }
