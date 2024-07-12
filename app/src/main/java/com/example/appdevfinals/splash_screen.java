@@ -37,9 +37,9 @@ public class splash_screen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user == null) {
+                    mAuth.signOut();
                     Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
                     startActivity(openLoginScreen);
                     finish();
