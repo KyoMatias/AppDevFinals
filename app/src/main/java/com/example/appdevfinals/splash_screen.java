@@ -30,6 +30,7 @@ public class splash_screen extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
 
         if (mAuth != null) {
             currentUser = mAuth.getCurrentUser();
@@ -39,7 +40,6 @@ public class splash_screen extends AppCompatActivity {
             public void run() {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user == null) {
-                    mAuth.signOut();
                     Intent openLoginScreen = new Intent(splash_screen.this, login_screen.class);
                     startActivity(openLoginScreen);
                     finish();

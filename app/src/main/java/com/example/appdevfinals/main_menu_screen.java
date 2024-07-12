@@ -46,7 +46,6 @@ public class main_menu_screen extends AppCompatActivity {
         fragmentTransaction.replace(R.id.content, fragment, "");
         fragmentTransaction.commit();
 
-//        Intent openEdit = new Intent(main_menu_screen.this, edit_profile_screen.class);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener selectedListener = menuItem -> {

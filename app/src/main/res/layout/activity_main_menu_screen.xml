@@ -33,8 +33,5 @@
             app:menu="@menu/menu_nav">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.appdevfinals;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,7 +32,7 @@ import java.util.List;
 public class main_menu_fragment extends Fragment {
 
     FirebaseAuth firebaseAuth;
-    String myUID;
+    String myuid;
     RecyclerView recyclerView;
     List<model_post> posts;
     adapter_posts adapterPosts;
@@ -72,9 +73,32 @@ public class main_menu_fragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
 
+            }
+        });
+    }
+
+    private void searchPosts(final String search) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                posts.clear();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    model_post modelPost = dataSnapshot1.getValue(model_post.class);
+                    if (modelPost.getTitle().toLowerCase().contains(search.toLowerCase()) ||
+                            modelPost.getDescription().toLowerCase().contains(search.toLowerCase())) {
+                        posts.add(modelPost);
+                    }
+                    adapterPosts = new adapter_posts(getActivity(), posts);
+                    recyclerView.setAdapter(adapterPosts);
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -83,6 +107,36 @@ public class main_menu_fragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (!TextUtils.isEmpty(query)) {
+                    searchPosts(query);
+                } else {
+                    loadPosts();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (!TextUtils.isEmpty(newText)) {
+                    searchPosts(newText);
+                } else {
+                    loadPosts();
+                }
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     // Logout functionality
