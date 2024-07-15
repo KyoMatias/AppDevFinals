@@ -7,53 +7,63 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FBA9AB">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="2dp">
+            android:layout_margin="2dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/post_title_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Title"
-            android:minHeight="80dp"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:background="@drawable/ic_edit"/>
+            <EditText
+                android:id="@+id/post_title_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BA181B"
+                android:hint="Enter Title"
+                android:minHeight="80dp"
+                android:padding="10dp"
+                android:textColor="#A4161A"
+                android:textColorHint="#AEA4161A"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/post_image_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/ic_edit_image" />
+            <ImageView
+                android:id="@+id/post_image_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="15dp"
+                android:background="#AF6565" />
 
-        <EditText
-            android:id="@+id/post_desc_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="start"
-            android:hint="Enter Description"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minHeight="120dp"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:background="@drawable/ic_edit"/>
+            <EditText
+                android:id="@+id/post_desc_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#BA181B"
+                android:breakStrategy="simple"
+                android:gravity="start"
+                android:hint="Enter Description"
+                android:inputType="textCapSentences|textMultiLine"
+                android:minHeight="120dp"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="#A4161A"
+                android:textColorHint="#9FA4161A"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/post_upload_button"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="20sp"
-            android:text="Post"
-            android:textAlignment="center" />
+            <Button
+                android:id="@+id/post_upload_button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="20sp"
+                android:background="@color/colorWhite"
+                android:backgroundTint="#BA181B"
+                android:backgroundTintMode="add"
+                android:text="Post"
+                android:textAlignment="center" />
 
         </LinearLayout>
     </ScrollView>
