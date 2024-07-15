@@ -13,16 +13,17 @@
         android:id="@+id/bg_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/activity_form_page" />
+        app:srcCompat="@drawable/LoginBG" />
 
     <TextView
         android:id="@+id/text_label_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
         android:text="Don't have an account?"
-        android:textColor="#FFFFFF"
+        android:textColor="#660708"
         app:layout_constraintBottom_toTopOf="@+id/login_register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +33,7 @@
         android:id="@+id/login_register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="76dp"
         android:backgroundTint="#8F2F2F"
         android:text="Register Here"
@@ -40,25 +41,6 @@
         app:layout_constraintEnd_toEndOf="@+id/text_label_1"
         app:layout_constraintTop_toBottomOf="@+id/text_label_1"
         app:strokeColor="#000000" />
-
-    <TextView
-        android:id="@+id/only_bands_label"
-        android:layout_width="234dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="213dp"
-        android:layout_marginBottom="17dp"
-        android:fontFamily="cursive"
-        android:lineSpacingExtra="10sp"
-        android:text="OnlyBands"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/username_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Username Label -->
     <TextView
@@ -70,13 +52,13 @@
         android:text="Email"
         android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="#660708"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/email_edit_text"
         app:layout_constraintEnd_toEndOf="@+id/password_label"
         app:layout_constraintStart_toStartOf="@+id/email_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <!-- Password Label -->
     <TextView
@@ -89,7 +71,7 @@
         android:text="Password"
         android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="#660708"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/password_edit_text"
@@ -102,10 +84,9 @@
         android:id="@+id/email_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:layout_marginBottom="16dp"
         android:background="#FFFFFF"
-        android:backgroundTint="#FFBCB7"
+        android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:fadingEdge="horizontal"
         android:inputType="text"
@@ -113,7 +94,8 @@
         android:textColor="#C11919"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/password_label"
-        app:layout_constraintStart_toStartOf="@+id/only_bands_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_label" />
 
     <!-- Password Text Box -->
@@ -123,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="29dp"
         android:background="#FFFFFF"
-        android:backgroundTint="#FEBBB6"
+        android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword"
         android:padding="4px"
@@ -136,7 +118,7 @@
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="27dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif-condensed-light"
@@ -154,19 +136,32 @@
         android:layout_height="0dp"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="serif"
         android:lineSpacingExtra="0sp"
         android:text="By Creating an account, you agree to ONLYBANDS' terms and conditions. This information can be found at our website"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="#660708"
         android:textSize="10sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_register_button" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="409dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="179dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/username_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/Redlogo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
