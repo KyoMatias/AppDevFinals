@@ -6,69 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".register_screen">
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/register_first_name_label"-->
-    <!--        android:layout_width="143dp"-->
-    <!--        android:layout_height="34dp"-->
-    <!--        android:fontFamily="monospace"-->
-    <!--        android:lineSpacingExtra="10sp"-->
-    <!--        android:text="First Name"-->
-    <!--        android:textAlignment="center"-->
-    <!--        android:textAllCaps="false"-->
-    <!--        android:textColor="#FFFFFF"-->
-    <!--        android:textSize="16sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        tools:layout_editor_absoluteX="134dp"-->
-    <!--        tools:layout_editor_absoluteY="104dp" />-->
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/register_first_name_edit_text"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="#FFFFFF"-->
-    <!--        android:backgroundTint="#FFBCB7"-->
-    <!--        android:ems="10"-->
-    <!--        android:fadingEdge="horizontal"-->
-    <!--        android:inputType="text"-->
-    <!--        android:padding="3px"-->
-    <!--        android:textColor="#C11919"-->
-    <!--        android:textStyle="bold"-->
-    <!--        tools:layout_editor_absoluteX="101dp"-->
-    <!--        tools:layout_editor_absoluteY="138dp" />-->
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/register_last_name_edit_text"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="#FFFFFF"-->
-    <!--        android:backgroundTint="#FFBCB7"-->
-    <!--        android:ems="10"-->
-    <!--        android:fadingEdge="horizontal"-->
-    <!--        android:inputType="text"-->
-    <!--        android:padding="3px"-->
-    <!--        android:textColor="#C11919"-->
-    <!--        android:textStyle="bold"-->
-    <!--        tools:layout_editor_absoluteX="101dp"-->
-    <!--        tools:layout_editor_absoluteY="214dp" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/register_last_name_label"-->
-    <!--        android:layout_width="143dp"-->
-    <!--        android:layout_height="35dp"-->
-    <!--        android:fontFamily="monospace"-->
-    <!--        android:lineSpacingExtra="10sp"-->
-    <!--        android:text="Last Name"-->
-    <!--        android:textAlignment="center"-->
-    <!--        android:textAllCaps="false"-->
-    <!--        android:textColor="#FFFFFF"-->
-    <!--        android:textSize="16sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        tools:layout_editor_absoluteX="134dp"-->
-    <!--        tools:layout_editor_absoluteY="179dp" />-->
-
-    <!--Username-->
-
+    
     <ImageView
         android:id="@+id/bg_image_view"
         android:layout_width="wrap_content"
@@ -260,32 +198,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/newlogo" />
-
-    <!--    <Button
-        android:id="@+id/read_data_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="sans-serif-condensed-light"
-        android:lineSpacingExtra="12sp"
-        android:text="@string/read_data_button"
-        android:textColor="#A02020"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="642dp" />
-
-    <Button
-        android:id="@+id/delete_data_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="sans-serif-condensed-light"
-        android:lineSpacingExtra="12sp"
-        android:text="Delete Txt"
-        android:textColor="#A02020"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="222dp"
-        tools:layout_editor_absoluteY="642dp" />-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

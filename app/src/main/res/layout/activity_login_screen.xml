@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/LoginBG" />
+        app:srcCompat="@drawable/login_bg"/>
 
     <TextView
         android:id="@+id/text_label_1"
@@ -161,7 +161,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Redlogo" />
+        app:srcCompat="@drawable/red_logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
