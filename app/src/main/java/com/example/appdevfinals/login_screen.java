@@ -21,7 +21,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class log_in extends AppCompatActivity {
+public class login_screen extends AppCompatActivity {
     private Button btnLogin;
     private EditText etUsername, etPassword;
     int triesCounter = 10;
@@ -39,7 +39,7 @@ public class log_in extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.activity_login_screen);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -66,7 +66,7 @@ public class log_in extends AppCompatActivity {
         String loginPassword = etPassword.getText().toString().trim();
 
         if (loginUsername.isEmpty() || loginPassword.isEmpty()) {
-            Toast.makeText(log_in.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(login_screen.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -91,17 +91,17 @@ public class log_in extends AppCompatActivity {
 
             reader.close();
 
-            Intent openMainMenu = new Intent(log_in.this, main_menu.class);
+            Intent openMainMenu = new Intent(login_screen.this, main_menu_screen.class);
             if (isAuthenticated) {
-                Toast.makeText(log_in.this, "Login successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(login_screen.this, "Login successful", Toast.LENGTH_SHORT).show();
                 startActivity(openMainMenu);
             } else {
-                Toast.makeText(log_in.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(login_screen.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
             }
 
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(log_in.this, "Failed to read user data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(login_screen.this, "Failed to read user data", Toast.LENGTH_SHORT).show();
         }
     }
 
