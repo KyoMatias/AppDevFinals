@@ -19,39 +19,6 @@
         tools:context=".splash">
 
 
-        <TextView
-            android:id="@+id/only_bands_label"
-            android:layout_width="163dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="434dp"
-            android:fontFamily="cursive"
-            android:lineSpacingExtra="10sp"
-            android:text="OnlyBands"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/splash_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/splash_label"
-            android:layout_width="214dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="54dp"
-            android:fontFamily="sans-serif-light"
-            android:lineSpacingExtra="24sp"
-            android:text="Where Music Connects Us."
-            android:textAlignment="center"
-            android:textColor="#FF9797"
-            android:typeface="monospace"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
-
         <!--app:layout_constraintBottom_toTopOf="@+id/splash_register_button"-->
         <!--Register Button-->
 <!--        <Button-->
@@ -66,6 +33,21 @@
 <!--            app:layout_constraintTop_toBottomOf="@+id/splash_label"-->
 <!--            app:strokeColor="#000000" />-->
 
+        <TextView
+            android:id="@+id/splash_label"
+            android:layout_width="214dp"
+            android:layout_height="0dp"
+            android:fontFamily="sans-serif-light"
+            android:lineSpacingExtra="24sp"
+            android:text="Where Music Connects Us."
+            android:textAlignment="center"
+            android:textColor="#FF9797"
+            android:typeface="monospace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.558"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="468dp" />
+
         <ImageView
             android:id="@+id/bg_guitar_image_view"
             android:layout_width="wrap_content"
@@ -74,6 +56,14 @@
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="403dp"
+            android:layout_height="128dp"
+            app:srcCompat="@drawable/newlogo"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="375dp" />
 
         <!--Login Label-->
 <!--        <TextView-->
