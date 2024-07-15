@@ -7,6 +7,68 @@
     android:layout_height="match_parent"
     tools:context=".register_screen">
 
+    <!--    <TextView-->
+    <!--        android:id="@+id/register_first_name_label"-->
+    <!--        android:layout_width="143dp"-->
+    <!--        android:layout_height="34dp"-->
+    <!--        android:fontFamily="monospace"-->
+    <!--        android:lineSpacingExtra="10sp"-->
+    <!--        android:text="First Name"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="#FFFFFF"-->
+    <!--        android:textSize="16sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        tools:layout_editor_absoluteX="134dp"-->
+    <!--        tools:layout_editor_absoluteY="104dp" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/register_first_name_edit_text"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="#FFFFFF"-->
+    <!--        android:backgroundTint="#FFBCB7"-->
+    <!--        android:ems="10"-->
+    <!--        android:fadingEdge="horizontal"-->
+    <!--        android:inputType="text"-->
+    <!--        android:padding="3px"-->
+    <!--        android:textColor="#C11919"-->
+    <!--        android:textStyle="bold"-->
+    <!--        tools:layout_editor_absoluteX="101dp"-->
+    <!--        tools:layout_editor_absoluteY="138dp" />-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/register_last_name_edit_text"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="#FFFFFF"-->
+    <!--        android:backgroundTint="#FFBCB7"-->
+    <!--        android:ems="10"-->
+    <!--        android:fadingEdge="horizontal"-->
+    <!--        android:inputType="text"-->
+    <!--        android:padding="3px"-->
+    <!--        android:textColor="#C11919"-->
+    <!--        android:textStyle="bold"-->
+    <!--        tools:layout_editor_absoluteX="101dp"-->
+    <!--        tools:layout_editor_absoluteY="214dp" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/register_last_name_label"-->
+    <!--        android:layout_width="143dp"-->
+    <!--        android:layout_height="35dp"-->
+    <!--        android:fontFamily="monospace"-->
+    <!--        android:lineSpacingExtra="10sp"-->
+    <!--        android:text="Last Name"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="#FFFFFF"-->
+    <!--        android:textSize="16sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        tools:layout_editor_absoluteX="134dp"-->
+    <!--        tools:layout_editor_absoluteY="179dp" />-->
+
+    <!--Username-->
+
     <ImageView
         android:id="@+id/bg_image_view"
         android:layout_width="wrap_content"
@@ -16,115 +78,40 @@
         app:srcCompat="@drawable/activity_form_page" />
 
     <TextView
-        android:id="@+id/register_password_label"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="10sp"
-        android:text="Password"
-        android:textAlignment="center"
-        android:textAllCaps="false"
+        android:id="@+id/text_label_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="10dp"
+        android:text="Already have an account??"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_password_edit_text"
-        app:layout_constraintEnd_toEndOf="@+id/register_password_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/register_password_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_username_edit_text" />
-
-    <EditText
-        android:id="@+id/register_password_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FEBBB6"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:padding="4px"
-        android:textColor="#AF1D1D"
-        app:layout_constraintBottom_toTopOf="@+id/register_email_label"
+        app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintStart_toStartOf="@+id/register_email_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_password_label" />
-
-    <EditText
-        android:id="@+id/register_last_name_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="22dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFBCB7"
-        android:ems="10"
-        android:fadingEdge="horizontal"
-        android:inputType="text"
-        android:padding="3px"
-        android:textColor="#C11919"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_username_label"
-        app:layout_constraintStart_toStartOf="@+id/register_first_name_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_last_name_label" />
+        app:layout_constraintTop_toBottomOf="@+id/register_button" />
 
     <TextView
-        android:id="@+id/register_last_name_label"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
-        android:fontFamily="monospace"
+        android:id="@+id/only_bands_label"
+        android:layout_width="234dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="cursive"
         android:lineSpacingExtra="10sp"
-        android:text="Last Name"
+        android:text="OnlyBands"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="48sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_last_name_edit_text"
-        app:layout_constraintEnd_toEndOf="@+id/register_last_name_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/register_last_name_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_first_name_edit_text" />
-
-    <EditText
-        android:id="@+id/register_username_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFBCB7"
-        android:ems="10"
-        android:fadingEdge="horizontal"
-        android:inputType="text"
-        android:padding="3px"
-        android:textColor="#C11919"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_password_label"
-        app:layout_constraintStart_toStartOf="@+id/register_password_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_username_label" />
-
-    <EditText
-        android:id="@+id/register_email_edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFBCB7"
-        android:ems="10"
-        android:fadingEdge="horizontal"
-        android:inputType="text"
-        android:padding="3px"
-        android:textColor="#C11919"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/back_button"
-        app:layout_constraintStart_toStartOf="@+id/register_button"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_label" />
+        app:layout_constraintBottom_toTopOf="@+id/register_username_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/register_username_label"
-        android:layout_width="0dp"
+        android:layout_width="143dp"
         android:layout_height="0dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
         android:text="Username"
@@ -134,69 +121,15 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/register_username_edit_text"
-        app:layout_constraintEnd_toEndOf="@+id/register_username_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/register_username_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_last_name_edit_text" />
-
-    <TextView
-        android:id="@+id/register_email_label"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="10sp"
-        android:text="Email"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_email_edit_text"
-        app:layout_constraintEnd_toEndOf="@+id/register_email_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/register_email_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/register_password_edit_text" />
-
-    <TextView
-        android:id="@+id/only_bands_label"
-        android:layout_width="234dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="25dp"
-        android:fontFamily="cursive"
-        android:lineSpacingExtra="10sp"
-        android:text="OnlyBands"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_first_name_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/register_first_name_label"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="33dp"
-        android:fontFamily="monospace"
-        android:lineSpacingExtra="10sp"
-        android:text="First Name"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_first_name_edit_text"
-        app:layout_constraintEnd_toEndOf="@+id/register_first_name_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/register_first_name_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
 
+    <!--Username End-->
+
+    <!--Password-->
     <EditText
-        android:id="@+id/register_first_name_edit_text"
+        android:id="@+id/register_username_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -209,17 +142,118 @@
         android:padding="3px"
         android:textColor="#C11919"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/register_last_name_label"
+        app:layout_constraintBottom_toTopOf="@+id/register_password_label"
         app:layout_constraintStart_toStartOf="@+id/only_bands_label"
-        app:layout_constraintTop_toBottomOf="@+id/register_first_name_label" />
+        app:layout_constraintTop_toBottomOf="@+id/register_username_label" />
+
+    <!--Password End-->
+
+    <!--Email-->
+    <TextView
+        android:id="@+id/register_password_label"
+        android:layout_width="143dp"
+        android:layout_height="0dp"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="10sp"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/register_password_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_username_edit_text" />
+
+    <EditText
+        android:id="@+id/register_password_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FEBBB6"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:padding="4px"
+        android:textColor="#AF1D1D"
+        app:layout_constraintBottom_toTopOf="@+id/register_email_label"
+        app:layout_constraintStart_toStartOf="@+id/register_username_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_password_label" />
+
+    <!--Email End-->
+
+    <EditText
+        android:id="@+id/register_email_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFBCB7"
+        android:ems="10"
+        android:fadingEdge="horizontal"
+        android:inputType="text"
+        android:padding="3px"
+        android:textColor="#C11919"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/register_button"
+        app:layout_constraintStart_toStartOf="@+id/register_password_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_label" />
+
+    <TextView
+        android:id="@+id/register_email_label"
+        android:layout_width="143dp"
+        android:layout_height="0dp"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="10sp"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/register_email_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_password_edit_text" />
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="27dp"
+        android:backgroundTint="#8F2F2F"
+        android:fontFamily="sans-serif-condensed-light"
+        android:lineSpacingExtra="12sp"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_label_1"
+        app:layout_constraintEnd_toEndOf="@+id/text_label_1"
+        app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
+
+    <Button
+        android:id="@+id/register_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="78dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif-condensed-light"
+        android:lineSpacingExtra="12sp"
+        android:text="Sign in Here"
+        android:textColor="#A02020"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/disclaimer_label"
+        app:layout_constraintEnd_toEndOf="@+id/text_label_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_label_1" />
 
     <TextView
         android:id="@+id/disclaimer_label"
-        android:layout_width="0dp"
+        android:layout_width="389dp"
         android:layout_height="0dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="serif"
         android:lineSpacingExtra="0sp"
         android:text="By Creating an account, you agree to ONLYBANDS' terms and conditions. This information can be found at our website"
@@ -228,60 +262,35 @@
         android:textColor="#FFFFFF"
         android:textSize="10sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/read_data_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bg_image_view"
         app:layout_constraintTop_toBottomOf="@+id/back_button" />
 
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="26dp"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="sans-serif-condensed-light"
-        android:lineSpacingExtra="12sp"
-        android:text="Register"
-        android:textColor="#A02020"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/back_button"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
-
-    <Button
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="38dp"
-        android:backgroundTint="#FFFFFF"
-        android:fontFamily="sans-serif-condensed-light"
-        android:lineSpacingExtra="12sp"
-        android:text="@string/back_button_text"
-        android:textColor="#A02020"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/disclaimer_label"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/register_button"
-        app:layout_constraintTop_toBottomOf="@+id/register_email_edit_text" />
-
-    <Button
+    <!--    <Button
         android:id="@+id/read_data_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif-condensed-light"
         android:lineSpacingExtra="12sp"
         android:text="@string/read_data_button"
         android:textColor="#A02020"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disclaimer_label" />
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="642dp" />
+
+    <Button
+        android:id="@+id/delete_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif-condensed-light"
+        android:lineSpacingExtra="12sp"
+        android:text="Delete Txt"
+        android:textColor="#A02020"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="642dp" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

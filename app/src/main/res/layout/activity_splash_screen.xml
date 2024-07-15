@@ -48,22 +48,23 @@
             android:textAlignment="center"
             android:textColor="#FF9797"
             android:typeface="monospace"
-            app:layout_constraintBottom_toTopOf="@+id/splash_register_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
 
-        <Button
-            android:id="@+id/splash_register_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:backgroundTint="#8F2F2F"
-            android:text="Get Started"
-            app:layout_constraintBottom_toTopOf="@+id/text_label_1"
-            app:layout_constraintStart_toStartOf="@+id/text_label_1"
-            app:layout_constraintTop_toBottomOf="@+id/splash_label"
-            app:strokeColor="#000000" />
+        <!--app:layout_constraintBottom_toTopOf="@+id/splash_register_button"-->
+        <!--Register Button-->
+<!--        <Button-->
+<!--            android:id="@+id/splash_register_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="17dp"-->
+<!--            android:backgroundTint="#8F2F2F"-->
+<!--            android:text="Get Started"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/text_label_1"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/text_label_1"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/splash_label"-->
+<!--            app:strokeColor="#000000" />-->
 
         <ImageView
             android:id="@+id/bg_guitar_image_view"
@@ -74,31 +75,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_label_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have an account?"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/login_text_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/splash_register_button" />
-
-        <!--     Change this to Login Button   -->
-        <TextView
-            android:id="@+id/login_text_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="35dp"
-            android:layout_marginBottom="96dp"
-            android:clickable="true"
-            android:text="Login Here"
-            android:textColor="#B3E9F0"
-            android:textSize="10sp"
-            android:textStyle="bold|italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/splash_register_button"
-            app:layout_constraintTop_toBottomOf="@+id/text_label_1" />
+        <!--Login Label-->
+<!--        <TextView-->
+<!--            android:id="@+id/text_label_1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Already have an account?"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/login_text_label"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/splash_register_button" />-->
+<!--        -->
+<!--        <TextView-->
+<!--            android:id="@+id/login_text_label"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="35dp"-->
+<!--            android:layout_marginBottom="96dp"-->
+<!--            android:clickable="true"-->
+<!--            android:text="Login Here"-->
+<!--            android:textColor="#B3E9F0"-->
+<!--            android:textSize="10sp"-->
+<!--            android:textStyle="bold|italic"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/splash_register_button"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/text_label_1" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

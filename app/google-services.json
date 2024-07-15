@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "797339529463",
+    "firebase_url": "https://appdevfio-default-rtdb.firebaseio.com",
+    "project_id": "appdevfio",
+    "storage_bucket": "appdevfio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797339529463:android:1f42b20cdce66d119c23f2",
+        "android_client_info": {
+          "package_name": "com.example.appdevfinals"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQHkgSAvUwkdeOQcgZtUm6D706M0b5jcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

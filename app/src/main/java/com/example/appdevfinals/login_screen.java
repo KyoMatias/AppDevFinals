@@ -1,38 +1,44 @@
 package com.example.appdevfinals;
 
-import static com.example.appdevfinals.R.*;
-
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import android.widget.Button;
-import android.content.Intent;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class login_screen extends AppCompatActivity {
-    private Button btnLogin;
-    private EditText etUsername, etPassword;
-    int triesCounter = 10;
 
-        /*Login functionality
-        input user credentials
-        click login button
-        check if credentials are correct in local text file which will be stored in the raw/assets folder
-        if credentials are correct, go to main menu
-        if credentials are incorrect, after 10 tries, disable login button
-        */
+    private FirebaseAuth mAuth;
+    private Button btnLogin, btnRegister;
+    private EditText etEmail, etPassword;
+    FirebaseUser currentUser;
+    private ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,63 +52,88 @@ public class login_screen extends AppCompatActivity {
             return insets;
         });
 
-        btnLogin = findViewById(id.login_btn);
-        etUsername = findViewById(id.username_edit_text);
-        etPassword = findViewById(id.password_edit_text);
+        etEmail = findViewById(R.id.email_edit_text);
+        etPassword = findViewById(R.id.password_edit_text);
 
-        btnLogin.setOnClickListener(new View.OnClickListener(){
+        mAuth = FirebaseAuth.getInstance();
+
+        Intent openRegistrationScreen = new Intent(login_screen.this, register_screen.class);
+
+        btnLogin = findViewById(R.id.login_button);
+        btnRegister = findViewById(R.id.login_register_button);
+        btnRegister.setOnClickListener(v -> startActivity(openRegistrationScreen));
+
+        if (mAuth != null) {
+            currentUser = mAuth.getCurrentUser();
+        }
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                String email = etEmail.getText().toString().trim();
+                String pass = etPassword.getText().toString().trim();
 
-                validateLogin();
+                // if format of email doesn't matches return null
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    etEmail.setError("Invalid Email");
+                    etEmail.setFocusable(true);
 
+                } else {
+                    loginUser(email, pass);
+                }
             }
         });
 
     }
 
-    private void validateLogin() {
-        String loginUsername = etUsername.getText().toString().trim();
-        String loginPassword = etPassword.getText().toString().trim();
+    private void loginUser(String email, String pass) {
+//        loadingBar.setMessage("Logging In....");
+//        loadingBar.show();
 
-        if (loginUsername.isEmpty() || loginPassword.isEmpty()) {
-            Toast.makeText(login_screen.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
 
-        try {
-            FileInputStream fis = openFileInput("user_data.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-            String line;
-            boolean isAuthenticated = false;
+            if (task.isSuccessful()) {
 
-            while ((line = reader.readLine()) != null) {
-                String[] userDetails = line.split(",");
-                if (userDetails.length == 5) {
-                    String savedUsername = userDetails[2];
-                    String savedPassword = userDetails[3];
+//                    loadingBar.dismiss();
+                FirebaseUser user = mAuth.getCurrentUser();
 
-                    if (savedUsername.equals(loginUsername) && savedPassword.equals(loginPassword)) {
-                        isAuthenticated = true;
-                        break;
-                    }
+                if (task.getResult().getAdditionalUserInfo().isNewUser()) {
+                    String email1 = user.getEmail();
+                    String uid = user.getUid();
+
+                    HashMap<Object, String> hashMap = new HashMap<>();
+                    hashMap.put("email", email1);
+                    hashMap.put("uid", uid);
+                    hashMap.put("name", "");
+                    hashMap.put("onlineStatus", "online");
+                    hashMap.put("typingTo", "noOne");
+                    hashMap.put("phone", "");
+                    hashMap.put("image", "");
+                    hashMap.put("cover", "");
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                    // store the value in Database in "Users" Node
+                    DatabaseReference reference = database.getReference("Users");
+
+                    // storing the value in Firebase
+                    reference.child(uid).setValue(hashMap);
                 }
-            }
 
-            reader.close();
-
-            Intent openMainMenu = new Intent(login_screen.this, main_menu_screen.class);
-            if (isAuthenticated) {
-                Toast.makeText(login_screen.this, "Login successful", Toast.LENGTH_SHORT).show();
+                Intent openMainMenu = new Intent(login_screen.this, main_menu_screen.class);
+                openMainMenu.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(openMainMenu);
+                finish();
             } else {
-                Toast.makeText(login_screen.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+//                    loadingBar.dismiss();
+                Toast.makeText(login_screen.this, "Login Failed", Toast.LENGTH_LONG).show();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            Toast.makeText(login_screen.this, "Failed to read user data", Toast.LENGTH_SHORT).show();
-        }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+//                loadingBar.dismiss();
+                Toast.makeText(login_screen.this, "Error Occurred", Toast.LENGTH_LONG).show();
+            }
+        });
     }
-
 }

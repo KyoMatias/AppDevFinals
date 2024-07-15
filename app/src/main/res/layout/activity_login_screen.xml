@@ -18,6 +18,30 @@
         app:srcCompat="@drawable/activity_form_page" />
 
     <TextView
+        android:id="@+id/text_label_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account?"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/login_register_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
+    <Button
+        android:id="@+id/login_register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="76dp"
+        android:backgroundTint="#8F2F2F"
+        android:text="Register Here"
+        app:layout_constraintBottom_toTopOf="@+id/disclaimer_label"
+        app:layout_constraintEnd_toEndOf="@+id/text_label_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_label_1"
+        app:strokeColor="#000000" />
+
+    <TextView
         android:id="@+id/only_bands_label"
         android:layout_width="234dp"
         android:layout_height="75dp"
@@ -43,15 +67,15 @@
         android:layout_height="0dp"
         android:fontFamily="monospace"
         android:lineSpacingExtra="10sp"
-        android:text="Username"
+        android:text="Email"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/username_edit_text"
+        app:layout_constraintBottom_toTopOf="@+id/email_edit_text"
         app:layout_constraintEnd_toEndOf="@+id/password_label"
-        app:layout_constraintStart_toStartOf="@+id/username_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/email_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/only_bands_label" />
 
     <!-- Password Label -->
@@ -69,13 +93,13 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/password_edit_text"
-        app:layout_constraintEnd_toEndOf="@+id/login_btn"
+        app:layout_constraintEnd_toEndOf="@+id/login_button"
         app:layout_constraintStart_toStartOf="@+id/password_edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/username_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/email_edit_text" />
 
     <!-- Username Text Box -->
     <EditText
-        android:id="@+id/username_edit_text"
+        android:id="@+id/email_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -86,7 +110,6 @@
         android:fadingEdge="horizontal"
         android:inputType="text"
         android:padding="3px"
-        android:text="Name"
         android:textColor="#C11919"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/password_label"
@@ -98,32 +121,31 @@
         android:id="@+id/password_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="29dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FEBBB6"
         android:ems="10"
         android:inputType="textPassword"
         android:padding="4px"
-        android:text="password"
         android:textColor="#AF1D1D"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
-        app:layout_constraintStart_toStartOf="@+id/username_edit_text"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintStart_toStartOf="@+id/email_edit_text"
         app:layout_constraintTop_toBottomOf="@+id/password_label" />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="170dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="27dp"
         android:backgroundTint="#FFFFFF"
         android:fontFamily="sans-serif-condensed-light"
         android:lineSpacingExtra="12sp"
         android:text="@string/loginBtn"
         android:textColor="#A02020"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/disclaimer_label"
-        app:layout_constraintEnd_toEndOf="@+id/password_edit_text"
-        app:layout_constraintStart_toStartOf="@+id/password_edit_text"
+        app:layout_constraintBottom_toTopOf="@+id/text_label_1"
+        app:layout_constraintEnd_toEndOf="@+id/text_label_1"
         app:layout_constraintTop_toBottomOf="@+id/password_edit_text" />
 
     <TextView
@@ -132,7 +154,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="11dp"
         android:layout_marginEnd="11dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="26dp"
         android:fontFamily="serif"
         android:lineSpacingExtra="0sp"
         android:text="By Creating an account, you agree to ONLYBANDS' terms and conditions. This information can be found at our website"
@@ -144,7 +166,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/login_register_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

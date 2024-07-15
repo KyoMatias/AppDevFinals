@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,119 +9,29 @@
     android:background="#D07474"
     tools:context=".main_menu_screen">
 
-    <TextView
-        android:id="@+id/only_bands_header_label"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="97dp"
-        android:layout_marginBottom="574dp"
-        android:fontFamily="cursive"
-        android:lineSpacingExtra="10sp"
-        android:text="OnlyBands"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/main_reels_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/main_header_account_button"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="81dp">
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/main_bottom_app_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
-    <ImageButton
-        android:id="@+id/main_settings_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:scaleX="0.4"
-        android:scaleY="0.4"
-        app:layout_constraintBottom_toBottomOf="@+id/main_reels_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/main_reels_button"
-        app:layout_constraintTop_toTopOf="@+id/main_reels_button"
-        app:srcCompat="@drawable/settingsico" />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/windowBackground"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_nav">
 
-    <ImageButton
-        android:id="@+id/main_inbox_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="24dp"
-        android:scaleX="0.3"
-        android:scaleY="0.3"
-        app:layout_constraintBottom_toBottomOf="@+id/main_bottom_app_bar"
-        app:layout_constraintEnd_toStartOf="@+id/main_reels_button"
-        app:layout_constraintStart_toEndOf="@+id/main_appbar_account_button"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:srcCompat="@drawable/inboxico" />
-
-    <ImageButton
-        android:id="@+id/main_header_account_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="563dp"
-        android:scaleX="0.3"
-        android:scaleY="0.3"
-        app:layout_constraintBottom_toTopOf="@+id/main_appbar_account_button"
-        app:layout_constraintEnd_toStartOf="@+id/only_bands_header_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/accountico" />
-
-    <ImageButton
-        android:id="@+id/main_appbar_account_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="2dp"
-        android:scaleX="0.3"
-        android:scaleY="0.3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/main_inbox_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_header_account_button"
-        app:srcCompat="@drawable/accountico" />
-
-    <ImageButton
-        android:id="@+id/main_reels_button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="2dp"
-        android:scaleX="0.4"
-        android:scaleY="0.4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/main_settings_button"
-        app:layout_constraintStart_toEndOf="@+id/main_inbox_button"
-        app:layout_constraintTop_toBottomOf="@+id/only_bands_header_label"
-        app:srcCompat="@drawable/reelsico" />
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/main_bottom_app_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_header_account_button" />
-
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
